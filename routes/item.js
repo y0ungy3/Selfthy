@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-var Post = require('../models/post');
+var Post = require('../models/item');
 
-// posting a post
-router.post('', function (req, res, next) {
+// posting a item
+router.post('/', function (req, res, next) {
     var post = new Post({
         description: req.body.description
     });
@@ -21,3 +21,5 @@ router.post('', function (req, res, next) {
         });
     });
 });
+
+module.exports = router;

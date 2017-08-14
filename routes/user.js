@@ -3,8 +3,9 @@ var router = express.Router();
 
 var User = require('../models/user');
 
-// user registration
- router.post('/', function(req, res, next) {
+/*// user registration
+router.post('/', function(req, res, next) {
 
- });
+});*/
 
+module.exports = router;

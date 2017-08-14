@@ -11,9 +11,9 @@ var schema = new Schema({
     description: {type: String, required: true},
     views: {type: String, required: true},
     links: [{type: Schema.Types.ObjectId, ref: 'SocialMedia'}],
-    posts: [{type: Schema.Types.ObjectId, ref: 'Post'}]
+    posts: [{type: Schema.Types.ObjectId, ref: 'Item'}]
 });
 
 schema.plugin(mongooseUniqueValidator);
 
-module.exports = mongoose.models('User', schema);
+module.exports = mongoose.model('User', schema);

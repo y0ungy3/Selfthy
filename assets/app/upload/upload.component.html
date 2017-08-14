@@ -1,12 +1,15 @@
 <h1>Upload</h1>
-<div class="form-group">
-    <input type="file"/>
-</div>
-<div class="form-group">
-    <label for="description">Description</label>
-    <textarea class="form-control" id="description" rows="3"></textarea>
-</div>
-<div class="form-group">
-    <button class="btn btn-primary" (click)="onPost()">Post</button>
-</div>
+<form (ngSubmit)="onPost(f)" #f="ngForm">
+    <div class="form-group">
+        <input type="file"/>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" rows="3" name="description" ngModel></textarea>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Post</button>
+    </div>
+</form>
+
 

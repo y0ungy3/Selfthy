@@ -9,4 +9,4 @@ var schema = new Schema({
     description: {type: String}
 });
 
-module.exports = mongoose.models('SocialMedia', schema);
+module.exports = mongoose.model('SocialMedia', schema);
