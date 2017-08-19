@@ -1,8 +1,9 @@
-<div class="container">
+<div class="container-fluid">
 
     <div class="row">
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown button
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -12,7 +13,8 @@
             </div>
         </div>
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown button
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -22,7 +24,8 @@
             </div>
         </div>
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown button
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -32,7 +35,6 @@
             </div>
         </div>
     </div>
-
 
 
     <br/>
@@ -40,21 +42,15 @@
     <div class="row">
         <div class="col-xl-12">
             <h1 class="page-header">What's New
-
                 <small>See what everyone is talking about</small>
-
             </h1>
         </div>
     </div>
 
 
     <div class="row">
-        <div class="col-lg-4 portfolio-item"  *ngFor="let item of allItems">
-            <div> <a href="#">
-                <img class="img-fluid" src="http://placehold.it/700x400" alt="" />
-            </a>
-                <p>{{item.description}}</p>
-            </div>
+        <div class="col-lg-4 portfolio-item" *ngFor="let item of allItems">
+            <app-item [anItem]="item"></app-item>
         </div>
     </div>
 

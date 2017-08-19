@@ -10,6 +10,8 @@ import {HeaderComponent} from "./header/header.component";
 import {ItemService} from "./services/item.service";
 import {FormsModule} from "@angular/forms";
 import {ItemComponent} from "./item/item.component";
+import {LoginComponent} from "./auth/login/login.component";
+import {RegistrationComponentt} from "./auth/registration/registration.component";
 
 @NgModule({
     declarations: [
@@ -17,7 +19,9 @@ import {ItemComponent} from "./item/item.component";
         UploadComponent,
         HomeComponent,
         HeaderComponent,
-        ItemComponent
+        ItemComponent,
+        LoginComponent,
+        RegistrationComponentt
     ],
     imports: [BrowserModule, HttpModule, routing, FormsModule],
     bootstrap: [AppComponent],

@@ -1,7 +1,8 @@
 export class Item {
     constructor(
-        //TODO: image
+        public picture: any,
         public description: String,
+        public createdAt: Date,
         public itemID?: String,
         public userId?: String) {
     };

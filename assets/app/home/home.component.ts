@@ -3,15 +3,20 @@ import {ItemService} from "../services/item.service";
 import {Item} from "../models/Item";
 @Component({
     selector: 'app-home',
-    templateUrl: './home.component.html'
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
 
-    private allItems: Item[] = [];
+    allItems: Item[] = [];
 
     constructor(private itemService: ItemService){};
 
     ngOnInit() {
-        this.allItems = this.itemService.getAllItems();
+        this.itemService.getAllItems()
+            .subscribe(
+            (items: Item[]) => {
+                this.allItems = items;
+            });
     }
 }
