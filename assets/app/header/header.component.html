@@ -3,10 +3,17 @@
      role="navigation">
     <div class="container">
         <button type="button" class="navbar-toggler float-right hidden-md-up"
-                data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">☰</button> <a class="navbar-brand" href="#">SelfAd</a>
+                data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">☰
+        </button>
+        <a class="navbar-brand" href="#">SelfAd</a>
+        <ul class="nav navbar-nav mr-auto">
+            <li routerLinkActive="active" class="nav-item"><a routerLink="/home" class="nav-link">Home</a></li>
+            <li routerLinkActive="active" class="nav-item"><a routerLink="/upload" class="nav-link">Upload</a></li>
+        </ul>
         <ul class="nav navbar-nav">
-            <li routerLinkActive="active" class="nav-item"> <a routerLink="/home" class="nav-link">Home</a></li>
-            <li routerLinkActive="active" class="nav-item"> <a routerLink="/upload" class="nav-link">Upload</a></li>
+            <li routerLinkActive="active" class="nav-item"><a routerLink="/login" class="nav-link">Login</a></li>
+            <li routerLinkActive="active" class="nav-item"><a routerLink="/logout" class="nav-link">Logout</a></li>
+            <li routerLinkActive="active" class="nav-item"><a routerLink="/registration" class="nav-link">Register</a></li>
         </ul>
     </div>
 </nav>
