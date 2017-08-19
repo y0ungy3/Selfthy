@@ -1,19 +1,21 @@
-<form>
+<form (ngSubmit)="onRegister(f)" #f="ngForm">
     <div class="form-group">
         <label for="email">Email</label>
-        <input class="form-control" type="email" id="email" name="email"/>
+        <input class="form-control" type="email" id="email" name="email" required email ngModel #email="ngModel"/>
+        <span *ngIf="email.touched && !email.valid" class="help-block error-message">Please enter a valid email</span>
     </div>
     <div class="form-group">
         <label for="username">Username</label>
-        <input class="form-control" type="text" id="username" name="username"/>
+        <input class="form-control" type="text" id="username" name="username" required ngModel/>
     </div>
     <div class="form-group">
         <label for="password">Password</label>
-        <input class="form-control" type="password" id="password" name="password"/>
+        <input class="form-control" type="password" id="password" name="password" required ngModel/>
     </div>
     <div class="form-group">
         <label for="retypePassword">Retype Password</label>
-        <input class="form-control" type="password" id="retypePassword" name="retypePassword"/>
+        <input class="form-control" type="password" id="retypePassword" name="retypePassword" required ngModel #retypePassword="ngModel"/>
+        <span *ngIf="!checkPassword(f) && retypePassword.touched && retypePassword.valid" class="help-block error-message">Password do not match</span>
     </div>
-    <button type="submit" class="btn btn-primary">Register</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!f.valid && !checkPassword(f)">Register</button>
 </form>

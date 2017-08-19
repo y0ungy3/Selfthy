@@ -12,6 +12,7 @@ import {FormsModule} from "@angular/forms";
 import {ItemComponent} from "./item/item.component";
 import {LoginComponent} from "./auth/login/login.component";
 import {RegistrationComponentt} from "./auth/registration/registration.component";
+import {AuthService} from "./services/auth.service";
 
 @NgModule({
     declarations: [
@@ -25,7 +26,7 @@ import {RegistrationComponentt} from "./auth/registration/registration.component
     ],
     imports: [BrowserModule, HttpModule, routing, FormsModule],
     bootstrap: [AppComponent],
-    providers: [ItemService]
+    providers: [ItemService, AuthService]
 })
 export class AppModule {
 

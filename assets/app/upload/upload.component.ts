@@ -15,7 +15,7 @@ export class UploadComponent {
     };
 
     onPost(form: NgForm) {
-       const item = {picture: this.img, description: form.value.description}
+       const item = {picture: this.img, description: form.value.description};
         this.itemService.addItem(item).subscribe(
             data => console.log(data),
             error => console.log(error)
