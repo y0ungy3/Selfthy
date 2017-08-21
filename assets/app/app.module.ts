@@ -15,6 +15,8 @@ import {RegistrationComponentt} from "./auth/registration/registration.component
 import {AuthService} from "./services/auth.service";
 import {ErrorComponent} from "./error/error.component";
 import {ErrorService} from "./services/error.service";
+import {ProfileComponent} from "./profile/profile.component";
+import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 
 @NgModule({
     declarations: [
@@ -25,7 +27,9 @@ import {ErrorService} from "./services/error.service";
         ItemComponent,
         LoginComponent,
         RegistrationComponentt,
-        ErrorComponent
+        ErrorComponent,
+        ProfileComponent,
+        PageNotFoundComponent
     ],
     imports: [BrowserModule, HttpModule, routing, FormsModule],
     bootstrap: [AppComponent],

@@ -21,7 +21,6 @@ export class ItemService {
         return this.http.post('http://localhost:3000/item' + token, body, {headers: headers})
             .map((response: Response) => {
                 const result = response.json();
-                console.log(result.obj);
                 const item = new Item(
                     result.obj.picture,
                     result.obj.description,
