@@ -13,6 +13,8 @@ import {ItemComponent} from "./item/item.component";
 import {LoginComponent} from "./auth/login/login.component";
 import {RegistrationComponentt} from "./auth/registration/registration.component";
 import {AuthService} from "./services/auth.service";
+import {ErrorComponent} from "./error/error.component";
+import {ErrorService} from "./services/error.service";
 
 @NgModule({
     declarations: [
@@ -22,11 +24,12 @@ import {AuthService} from "./services/auth.service";
         HeaderComponent,
         ItemComponent,
         LoginComponent,
-        RegistrationComponentt
+        RegistrationComponentt,
+        ErrorComponent
     ],
     imports: [BrowserModule, HttpModule, routing, FormsModule],
     bootstrap: [AppComponent],
-    providers: [ItemService, AuthService]
+    providers: [ItemService, AuthService, ErrorService]
 })
 export class AppModule {
 

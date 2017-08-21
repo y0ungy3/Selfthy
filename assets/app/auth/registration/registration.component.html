@@ -17,5 +17,5 @@
         <input class="form-control" type="password" id="retypePassword" name="retypePassword" required ngModel #retypePassword="ngModel"/>
         <span *ngIf="!checkPassword(f) && retypePassword.touched && retypePassword.valid" class="help-block error-message">Password do not match</span>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!f.valid && !checkPassword(f)">Register</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Register</button>
 </form>

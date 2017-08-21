@@ -16,7 +16,7 @@ router.post('/', function (req, res, next) {
     user.save(function (err, result) {
         if (err) {
             return res.status(500).json({
-                title: 'An error occurred trying to register a user',
+                title: 'Email or username already existed. Please login if you already have an account',
                 error: err
             });
         }
@@ -38,7 +38,7 @@ router.post('/login', function (req, res, next) {
         }
         if (!user) {
             return res.status(401).json({
-                title: 'Login failed',
+                title: 'Invalid username or password, please try again',
                 error: {message: 'Invalid login credentials'}
             });
         }

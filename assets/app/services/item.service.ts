@@ -4,10 +4,11 @@ import 'rxjs/Rx';
 import {Observable} from "rxjs";
 
 import {Item} from "../models/Item";
+import {ErrorService} from "./error.service";
 
 @Injectable()
 export class ItemService {
-    constructor(private http: Http) {
+    constructor(private http: Http, private errorService: ErrorService) {
     };
 
     private allItems: Item[] = [];
@@ -26,8 +27,11 @@ export class ItemService {
                     result.obj.itemID);
                 this.allItems.push(item);
                 return item;
+            })
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
             });
-            //.catch((error: Response) => Observable.throw(error.json()));
     }
 
     getAllItems() {
@@ -42,8 +46,11 @@ export class ItemService {
                 }
                 this.allItems = transformedItems;
                 return transformedItems;
+            })
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
             });
-            //.catch((error: Response) => Observable.throw(error.json()));
 
     }
 }

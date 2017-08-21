@@ -24,4 +24,8 @@ export class LoginComponent {
                 error => console.log(error)
             )
     }
+
+    registerClicked() {
+        this.router.navigateByUrl('/registration');
+    }
 }
