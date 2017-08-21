@@ -51,7 +51,8 @@ router.post('/', function (req, res, next) {
         }
         var item = new Item({
             picture: req.body.picture,
-            description: req.body.description
+            description: req.body.description,
+            user: user
         });
         item.save(function (err, result) {
             if (err) {
@@ -60,6 +61,8 @@ router.post('/', function (req, res, next) {
                     error: err
                 });
             }
+            user.posts.push(result);
+            user.save();
             res.status(201).json({
                 message: 'Posted successfully',
                 obj: result

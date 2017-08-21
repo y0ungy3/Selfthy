@@ -17,14 +17,18 @@ export class ItemService {
     addItem(i: any) {
         const body = JSON.stringify(i);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('http://localhost:3000/item', body, {headers: headers})
+        const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
+        return this.http.post('http://localhost:3000/item' + token, body, {headers: headers})
             .map((response: Response) => {
                 const result = response.json();
+                console.log(result.obj);
                 const item = new Item(
                     result.obj.picture,
                     result.obj.description,
                     result.obj.createdAt,
-                    result.obj.itemID);
+                    result.obj._id,
+                    result.obj.user._id
+                );
                 this.allItems.push(item);
                 return item;
             })
