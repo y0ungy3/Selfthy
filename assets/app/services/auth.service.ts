@@ -9,6 +9,8 @@ import {ErrorService} from "./error.service";
 @Injectable()
 export class AuthService {
 
+    private user: User;
+
     constructor(private http: Http, private errorService: ErrorService){};
 
     register(user: User) {
@@ -40,5 +42,26 @@ export class AuthService {
 
     isLoggedIn() {
         return localStorage.getItem('token') !== null;
+    }
+
+    getUser(username: String) {
+        return this.http.get('http://localhost:3000/user/' + username )
+            .map((response: Response) => {
+                const user = response.json().obj;
+                const transformedUser = new User(
+                        user[0].username,
+                        user[0].email,
+                        null,
+                        user[0].description,
+                        user[0].picture,
+                        user[0].links,
+                        user[0]._id,
+                        user[0].items,
+                        user[0].views
+                );
+                this.user = transformedUser;
+                return transformedUser;
+            });
+            //.catch((error: Response) => Observable.throw(error.json()));
     }
 }

@@ -26,7 +26,7 @@ export class ItemService {
                     result.obj.description,
                     result.obj.createdAt,
                     result.obj._id,
-                    result.obj.user._id
+                    result.obj.user.username
                 );
                 this.allItems.push(item);
                 return item;
@@ -43,17 +43,22 @@ export class ItemService {
                 const items = response.json().obj;
                 let transformedItems: Item[] = [];
                 for (let item of items) {
+                    console.log(item);
                     transformedItems.push(new Item(
                         item.picture,
-                        item.description))
+                        item.description,
+                        item.createdAt,
+                        item._id,
+                        item.user.username
+                    ))
                 }
                 this.allItems = transformedItems;
                 return transformedItems;
-            })
-            .catch((error: Response) => {
+            });
+            /*.catch((error: Response) => {
                 this.errorService.handleError(error.json());
                 return Observable.throw(error.json());
-            });
+            });*/
 
     }
 }

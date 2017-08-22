@@ -51,4 +51,26 @@ router.post('/login', function (req, res, next) {
     });
 });
 
+router.get('/:username', function (req, res, next) {
+    User.find({username: req.params.username}, function (err, user) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occurred',
+                error: err
+            });
+        }
+        // if user doesn't exist
+        if (!user) {
+            return res.status(500).json({
+                title: 'No user found',
+                error: {message: 'User not found'}
+            });
+        }
+        res.status('200').json({
+            message: 'Get user successfully',
+            obj: user
+        });
+    })
+});
+
 module.exports = router;

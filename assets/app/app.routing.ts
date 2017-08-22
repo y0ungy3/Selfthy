@@ -12,7 +12,7 @@ const APP_ROUTES: Routes = [
     {path: 'upload', component: UploadComponent},
     {path: 'login', component: LoginComponent},
     {path: 'registration', component: RegistrationComponentt},
-    {path: 'user/:id', component: ProfileComponent},
+    {path: ':username', component: ProfileComponent},
     {path: 'not-found', component: PageNotFoundComponent},
     {path: '**', redirectTo: '/not-found'}
 ];

@@ -8,19 +8,19 @@ import {Router} from "@angular/router";
     templateUrl: './registration.component.html',
     styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponentt implements OnInit{
+export class RegistrationComponentt implements OnInit {
 
     constructor(private authService: AuthService, private router: Router) {
     };
 
     ngOnInit() {
-        if(this.authService.isLoggedIn()) {
+        if (this.authService.isLoggedIn()) {
             this.router.navigateByUrl('/home');
         }
     }
 
     onRegister(form: NgForm) {
-        if(form.value.password == form.value.retypePassword) {
+        if (form.value.password == form.value.retypePassword) {
             const user = new User(
                 form.value.username,
                 form.value.email,
@@ -28,9 +28,10 @@ export class RegistrationComponentt implements OnInit{
             );
             this.authService.register(user)
                 .subscribe(
-                    data => console.log(data),
-                    error => console.log(error),
-                    this.router.navigateByUrl('/login')
+                    data => {
+                        this.router.navigateByUrl('/login')
+                    },
+                    error => console.log(error)
                 );
         }
     }

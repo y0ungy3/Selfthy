@@ -8,6 +8,7 @@ var User = require('../models/user');
 // getting all the items
 router.get('/', function(req, res, next) {
     Item.find()
+        .populate('user', 'username')
         .exec(function (err, items) {
             if (err) {
                 return res.status(500).json({
