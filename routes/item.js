@@ -7,7 +7,7 @@ var User = require('../models/user');
 
 // getting all the items
 router.get('/', function(req, res, next) {
-    Item.find()
+    Item.find({}, null, {sort: {createdAt: -1}})
         .populate('user', 'username')
         .exec(function (err, items) {
             if (err) {

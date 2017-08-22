@@ -67,7 +67,6 @@ export class ItemService {
                 const items = response.json().obj;
                 let transformedItems: Item[] = [];
                 for (let item of items) {
-                    console.log(item);
                     transformedItems.push(new Item(
                         item.picture,
                         item.description,

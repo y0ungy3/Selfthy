@@ -10,11 +10,10 @@ import {ItemService} from "../services/item.service";
     styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-    constructor(private route: ActivatedRoute, private authService: AuthService, private itemService: ItemService) {
-    };
+    constructor(private route: ActivatedRoute, private authService: AuthService, private itemService: ItemService) {};
 
-    user: User;
-    allItems: Item[] = [];
+    private user: User;
+    private allItems: Item[] = [];
 
     ngOnInit() {
         // get the user's information
@@ -23,7 +22,7 @@ export class ProfileComponent implements OnInit {
             .subscribe(
                 (user: User) => {
                     this.user = user;
-                    console.log(user);
+                    // get all posts for this particular user
                     this.itemService.getItems(user.userId)
                         .subscribe(
                             (items: Item) => {
@@ -32,9 +31,6 @@ export class ProfileComponent implements OnInit {
                         );
                 }
             );
-
-
-
 
     }
 }
