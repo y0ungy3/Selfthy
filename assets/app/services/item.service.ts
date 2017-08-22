@@ -54,11 +54,33 @@ export class ItemService {
                 }
                 this.allItems = transformedItems;
                 return transformedItems;
-            });
-            /*.catch((error: Response) => {
+            })
+            .catch((error: Response) => {
                 this.errorService.handleError(error.json());
                 return Observable.throw(error.json());
-            });*/
+            });
+    }
 
+    getItems(userId: String) {
+        return this.http.get('http://localhost:3000/item/' + userId)
+            .map((response: Response) => {
+                const items = response.json().obj;
+                let transformedItems: Item[] = [];
+                for (let item of items) {
+                    console.log(item);
+                    transformedItems.push(new Item(
+                        item.picture,
+                        item.description,
+                        item.createdAt,
+                        item._id,
+                        item.user.username
+                    ))
+                }
+                return transformedItems;
+            })
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
 }

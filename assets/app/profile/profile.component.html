@@ -2,12 +2,7 @@
     <div style="text-align: center">
         <img src="" alt="Mountain View" style="width:304px;height:228px;">
         <p><b>{{user?.username}}</b></p>
-        <p>
-            Descriptions:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
-            odio, gravida pellentesque urna varius vitae.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
-            odio, gravida pellentesque urna varius vitae.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
-            odio, gravida pellentesque urna varius vitae. www.google.com
-        </p>
+        <p>{{user?.description}}</p>
         <p>Links to personal websites:</p>
         <ul>
             <li>www.tumblr.com</li>
@@ -20,90 +15,11 @@
             </h1>
         </div>
     </div>
-    <!-- /.row -->
-    <!-- Projects Row -->
+
     <div class="row">
-        <div class="col-lg-4 portfolio-item"> <a href="#">
-
-            <img class="img-fluid" src="http://placehold.it/700x400" alt="" />
-
-        </a>
-            <h3>
-
-                <a href="#">Project Name</a>
-
-            </h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
-                odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-        <div class="col-lg-4 portfolio-item"> <a href="#">
-
-            <img class="img-fluid" src="http://placehold.it/700x400" alt="" />
-
-        </a>
-            <h3>
-
-                <a href="#">Project Name</a>
-
-            </h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
-                odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-        <div class="col-lg-4 portfolio-item"> <a href="#">
-
-            <img class="img-fluid" src="http://placehold.it/700x400" alt="" />
-
-        </a>
-            <h3>
-
-                <a href="#">Project Name</a>
-
-            </h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
-                odio, gravida pellentesque urna varius vitae.</p>
+        <div class="col-lg-4 portfolio-item" *ngFor="let item of allItems">
+            <app-item [anItem]="item"></app-item>
         </div>
     </div>
-    <!-- /.row -->
-    <!-- Projects Row -->
-    <div class="row">
-        <div class="col-lg-4 portfolio-item"> <a href="#">
 
-            <img class="img-fluid" src="http://placehold.it/700x400" alt="" />
-
-        </a>
-            <h3>
-
-                <a href="#">Project Name</a>
-
-            </h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
-                odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-        <div class="col-lg-4 portfolio-item"> <a href="#">
-
-            <img class="img-fluid" src="http://placehold.it/700x400" alt="" />
-
-        </a>
-            <h3>
-
-                <a href="#">Project Name</a>
-
-            </h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
-                odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-        <div class="col-lg-4 portfolio-item"> <a href="#">
-
-            <img class="img-fluid" src="http://placehold.it/700x400" alt="" />
-
-        </a>
-            <h3>
-
-                <a href="#">Project Name</a>
-
-            </h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
-                odio, gravida pellentesque urna varius vitae.</p>
-        </div>
-    </div>
 </div>

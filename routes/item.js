@@ -23,6 +23,29 @@ router.get('/', function(req, res, next) {
         });
 });
 
+// get posts from one particular user
+router.get('/:userId', function(req, res, next) {
+    Item.find({user: req.params.userId}, function(err, items) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occurred',
+                error: err
+            });
+        }
+        // if no items found
+        if (!items) {
+            return res.status(500).json({
+                title: 'No posts found for this user',
+                error: {message: 'No posts found for this user'}
+            });
+        }
+        res.status('200').json({
+            message: 'Get posts for user successfully',
+            obj: items
+        });
+    })
+});
+
 // all routers below this one will have to go through this one
 // first before reaching other router
 router.use('/', function (req, res, next) {
@@ -62,7 +85,7 @@ router.post('/', function (req, res, next) {
                     error: err
                 });
             }
-            user.posts.push(result);
+            user.items.push(result);
             user.save();
             res.status(201).json({
                 message: 'Posted successfully',

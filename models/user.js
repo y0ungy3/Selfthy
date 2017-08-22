@@ -11,7 +11,7 @@ var schema = new Schema({
     picture: {type: Schema.Types.Mixed},
     description: {type: String},
     links: [{type: Schema.Types.ObjectId, ref: 'SocialMedia'}],
-    posts: [{type: Schema.Types.ObjectId, ref: 'Item'}]
+    items: [{type: Schema.Types.ObjectId, ref: 'Item'}]
 });
 
 schema.plugin(mongooseUniqueValidator);
