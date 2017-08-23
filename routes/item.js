@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
             if (err) {
                 return res.status(500).json({
                     title: 'An error occurred, could not get items from database',
-                    error: err
+                    error: {message: 'Could not get items from database'}
                 });
             }
             res.status(200).json({
@@ -29,7 +29,7 @@ router.get('/:userId', function(req, res, next) {
         if (err) {
             return res.status(500).json({
                 title: 'An error occurred',
-                error: err
+                error: {message: 'Could not get posts from a user'}
             });
         }
         // if no items found
@@ -54,7 +54,7 @@ router.use('/', function (req, res, next) {
         if (err) {
             return res.status(401).json({
                 title: 'Not Authenticated',
-                error: err
+                error: {message: 'User not Authenticated'}
             });
         }
         next();
@@ -95,5 +95,40 @@ router.post('/', function (req, res, next) {
     });
 });
 
+router.delete('/:id', function (req, res, next) {
+    var decoded = jwt.decode(req.query.token);
+    Item.findById(req.params.id, function (err, item) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occurred',
+                error: {message: 'Could not find the item to delete'}
+            });
+        }
+        if (!item) {
+            return res.status(500).json({
+                title: 'The item being deleted cannot be found',
+                error: {message: 'The item being deleted cannot be found'}
+            });
+        }
+        if (item.user != decoded.user._id) {
+            return res.status(401).json({
+                title: 'Not authenticated',
+                error: {message: 'User do not match'}
+            });
+        }
+        item.remove(function (err, result) {
+            if (err) {
+                return res.status(500).json({
+                    title: 'An error occurred',
+                    error: {message: 'Error while trying to remove the item'}
+                });
+            }
+            res.status(200).json({
+                message: 'Deleted Message Successfully',
+                obj: result
+            });
+        })
+    })
+});
 
 module.exports = router;

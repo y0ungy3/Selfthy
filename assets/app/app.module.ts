@@ -17,6 +17,7 @@ import {ErrorComponent} from "./error/error.component";
 import {ErrorService} from "./services/error.service";
 import {ProfileComponent} from "./profile/profile.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
+import {EditProfileComponent} from "./profile/edit-profile/edit-profile.component";
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
         RegistrationComponentt,
         ErrorComponent,
         ProfileComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        EditProfileComponent
     ],
     imports: [BrowserModule, HttpModule, routing, FormsModule],
     bootstrap: [AppComponent],

@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var User = require('./user');
 var schema = new Schema({
     picture: {type: Schema.Types.Mixed, required: true},
     description: {type: String},
@@ -14,6 +15,13 @@ schema.pre('save', function(next){
         this.createdAt = now;
     }
     next();
+});
+
+schema.post('remove', function(item) {
+    User.findById(item.user, function(err, user) {
+        user.items.pull(item);
+        user.save();
+    });
 });
 
 module.exports = mongoose.model('Item', schema);

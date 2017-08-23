@@ -43,7 +43,6 @@ export class ItemService {
                 const items = response.json().obj;
                 let transformedItems: Item[] = [];
                 for (let item of items) {
-                    console.log(item);
                     transformedItems.push(new Item(
                         item.picture,
                         item.description,
@@ -61,6 +60,7 @@ export class ItemService {
             });
     }
 
+    // get all posts for a particular user
     getItems(userId: String) {
         return this.http.get('http://localhost:3000/item/' + userId)
             .map((response: Response) => {
@@ -77,6 +77,17 @@ export class ItemService {
                 }
                 return transformedItems;
             })
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
+    }
+
+    deleteItem(item: Item) {
+        this.allItems.splice(this.allItems.indexOf(item), 1);
+        const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
+        return this.http.delete('http://localhost:3000/item/' + item.itemID + token)
+            .map((response: Response) => response.json())
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());
                 return Observable.throw(error.json());

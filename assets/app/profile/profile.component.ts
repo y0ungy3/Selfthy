@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {User} from "../models/User";
 import {AuthService} from "../services/auth.service";
 import {Item} from "../models/Item";
@@ -10,10 +10,12 @@ import {ItemService} from "../services/item.service";
     styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-    constructor(private route: ActivatedRoute, private authService: AuthService, private itemService: ItemService) {};
+    constructor(private route: ActivatedRoute, private authService: AuthService, private itemService: ItemService,
+    private router: Router) {};
 
     private user: User;
     private allItems: Item[] = [];
+    private isUser: boolean = false;
 
     ngOnInit() {
         // get the user's information
@@ -22,6 +24,7 @@ export class ProfileComponent implements OnInit {
             .subscribe(
                 (user: User) => {
                     this.user = user;
+                    this.isUser = this.belongsToUser(user);
                     // get all posts for this particular user
                     this.itemService.getItems(user.userId)
                         .subscribe(
@@ -31,6 +34,13 @@ export class ProfileComponent implements OnInit {
                         );
                 }
             );
+    }
 
+    onEdit() {
+        this.router.navigateByUrl("/edit/" + this.user.username);
+    }
+
+    belongsToUser(user: User) {
+        return localStorage.getItem('userId') == user.userId;
     }
 }

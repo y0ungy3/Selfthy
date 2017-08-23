@@ -13,11 +13,15 @@ module.exports = {
         rules: [
             {
                 test: /\.html$/,
-                use: [{ loader: 'html-loader' }]
+                use: [{loader: 'html-loader'}]
             },
             {
                 test: /\.css$/,
-                use: [{ loader: 'raw-loader' }]
+                use: [{loader: 'raw-loader'}]
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loader: "file-loader?name=/public/icons/[name].[ext]"
             }
         ],
         exprContextCritical: false

@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="form-group">
+        <button style="float: right" class="btn btn-primary" type="button" (click)="onSave()">Save</button>
+    </div>
+    <div style="text-align: center">
+        <img [src]="defaultPic" alt="profile picture" style="width:304px;height:228px;">
+        <p><b></b></p>
+        <label>Description</label>
+        <textarea class="form-control" rows="3"></textarea>
+        <p>Links to personal websites:</p>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <h1 class="page-header">Uploaded
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 portfolio-item" *ngFor="let item of allItems">
+            <app-item [anItem]="item"></app-item>
+            <button class="btn btn-danger" type="button" (click)="deletePost(item)">Delete</button>
+        </div>
+    </div>
+
+</div>
