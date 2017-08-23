@@ -11,8 +11,10 @@ import {ItemService} from "../services/item.service";
 })
 export class ProfileComponent implements OnInit {
     constructor(private route: ActivatedRoute, private authService: AuthService, private itemService: ItemService,
-    private router: Router) {};
+                private router: Router) {
+    };
 
+    private defaultPic = require('../../images/default-pic.jpg');
     private user: User;
     private allItems: Item[] = [];
     private isUser: boolean = false;
@@ -24,14 +26,23 @@ export class ProfileComponent implements OnInit {
             .subscribe(
                 (user: User) => {
                     this.user = user;
+
+                    // check if the person viewing this profile is the actual user or someone else
                     this.isUser = this.belongsToUser(user);
+
                     // get all posts for this particular user
                     this.itemService.getItems(user.userId)
                         .subscribe(
                             (items: Item) => {
                                 this.allItems = items;
+                            },
+                            (error) => {
+                                console.log(error)
                             }
                         );
+                },
+                (error) => {
+                    this.router.navigateByUrl('/not-found');
                 }
             );
     }

@@ -61,7 +61,26 @@ export class AuthService {
                 );
                 this.user = transformedUser;
                 return transformedUser;
+            })
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
             });
-            //.catch((error: Response) => Observable.throw(error.json()));
+    }
+
+    updateUser(user: User) {
+        const body = JSON.stringify(user);
+        const headers = new Headers({'Content-Type': 'application/json'});
+        const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
+        return this.http.patch('http://localhost:3000/user/' + user.userId + token, body, {headers: headers})
+            .map((response: Response) => response.json())
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
+    }
+
+    getUsername() {
+        return localStorage.getItem('username');
     }
 }

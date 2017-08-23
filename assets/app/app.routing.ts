@@ -13,9 +13,9 @@ const APP_ROUTES: Routes = [
     {path: 'upload', component: UploadComponent},
     {path: 'login', component: LoginComponent},
     {path: 'registration', component: RegistrationComponentt},
+    {path: 'not-found', component: PageNotFoundComponent},
     {path: 'edit/:username', component: EditProfileComponent},
     {path: ':username', component: ProfileComponent},
-    {path: 'not-found', component: PageNotFoundComponent},
     {path: '**', redirectTo: '/not-found'}
 ];
 

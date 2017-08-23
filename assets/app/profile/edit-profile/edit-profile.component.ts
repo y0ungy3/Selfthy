@@ -4,6 +4,7 @@ import {Item} from "../../models/Item";
 import {ItemService} from "../../services/item.service";
 import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {NgForm} from "@angular/forms";
 
 @Component({
     selector: 'app-editProfile',
@@ -17,7 +18,17 @@ export class EditProfileComponent {
     private user: User;
 
     constructor(private itemService: ItemService, private authService: AuthService, private route: ActivatedRoute, private router: Router){};
-    onSave() {
+    onSave(form: NgForm) {
+        const editedUser = new User(
+
+        );
+        this.authService.updateUser(editedUser)
+            .subscribe(
+                this.router.navigateByUrl('/' + this.user.username)
+            );
+    }
+
+    onCancel() {
         this.router.navigateByUrl('/' + this.user.username);
     }
 
