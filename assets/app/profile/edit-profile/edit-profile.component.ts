@@ -5,17 +5,20 @@ import {ItemService} from "../../services/item.service";
 import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
+import {CanDeactivateInterface} from "../../services/can-deactivate-guard.service";
+import {Observable} from "rxjs";
 
 @Component({
     selector: 'app-editProfile',
     templateUrl: './edit-profile.component.html',
     styleUrls: ['./edit-profile.component.css']
 })
-export class EditProfileComponent {
+export class EditProfileComponent implements CanDeactivateInterface{
 
     private defaultPic = require('../../../images/default-pic.jpg');
     private allItems: Item[] = [];
     private user: User;
+    changesSaved = false;
 
     constructor(private itemService: ItemService, private authService: AuthService, private route: ActivatedRoute, private router: Router){};
 
@@ -25,6 +28,7 @@ export class EditProfileComponent {
         );
         this.authService.updateUser(editedUser)
             .subscribe(
+                this.changesSaved = true,
                 this.router.navigateByUrl('/' + this.user.username)
             );
     }
@@ -40,6 +44,7 @@ export class EditProfileComponent {
             .subscribe(
                 (user: User) => {
                     this.user = user;
+                    // if this person is not the actual user then dont let him edit
                     if(!this.belongsToUser(user)) {
                         this.router.navigateByUrl('/home');
                     }
@@ -59,11 +64,19 @@ export class EditProfileComponent {
     deletePost(item: Item) {
         this.itemService.deleteItem(item)
             .subscribe(
-                this.allItems.splice(this.allItems.indexOf(item), 1)
+                (theItem) => {this.allItems.splice(this.allItems.indexOf(theItem), 1)}
             );
     }
 
     belongsToUser(user: User) {
         return localStorage.getItem('userId') == user.userId;
+    }
+
+    canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+        if(!this.changesSaved) {
+            return confirm("Do you want to stop editing and discard any changes you might have made?");
+        } else {
+            return true;
+        }
     }
 }

@@ -19,6 +19,7 @@ import {ProfileComponent} from "./profile/profile.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {EditProfileComponent} from "./profile/edit-profile/edit-profile.component";
 import {AuthGuardService} from "./services/auth-guard.service";
+import {CanDeactivateGuard} from "./services/can-deactivate-guard.service";
 
 @NgModule({
     declarations: [
@@ -36,7 +37,7 @@ import {AuthGuardService} from "./services/auth-guard.service";
     ],
     imports: [BrowserModule, HttpModule, routing, FormsModule],
     bootstrap: [AppComponent],
-    providers: [ItemService, ErrorService, AuthGuardService, AuthService]
+    providers: [ItemService, ErrorService, AuthGuardService, AuthService, CanDeactivateGuard]
 })
 export class AppModule {
 
