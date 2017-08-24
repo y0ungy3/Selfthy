@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {User} from "../models/User";
 import {AuthService} from "../services/auth.service";
 import {Item} from "../models/Item";
@@ -21,7 +21,28 @@ export class ProfileComponent implements OnInit {
 
     ngOnInit() {
         // get the user's information
-        const username = this.route.snapshot.params['username'];
+        let username = this.route.snapshot.params['username'];
+        this.route.params.subscribe(
+            (params: Params) => {
+                username = params['username'];
+                this.getUser(username);
+            }
+        );
+        // this is called when the component is first called
+        // it wont be called again if the url changes to a different user, that's the observable function above
+        this.getUser(username);
+
+    }
+
+    onEdit() {
+        this.router.navigateByUrl("/edit/" + this.user.username);
+    }
+
+    belongsToUser(user: User) {
+        return localStorage.getItem('userId') == user.userId;
+    }
+
+    getUser(username: String) {
         this.authService.getUser(username)
             .subscribe(
                 (user: User) => {
@@ -45,13 +66,5 @@ export class ProfileComponent implements OnInit {
                     this.router.navigateByUrl('/not-found');
                 }
             );
-    }
-
-    onEdit() {
-        this.router.navigateByUrl("/edit/" + this.user.username);
-    }
-
-    belongsToUser(user: User) {
-        return localStorage.getItem('userId') == user.userId;
     }
 }
