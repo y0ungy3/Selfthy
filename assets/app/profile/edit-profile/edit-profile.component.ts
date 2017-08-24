@@ -18,6 +18,7 @@ export class EditProfileComponent {
     private user: User;
 
     constructor(private itemService: ItemService, private authService: AuthService, private route: ActivatedRoute, private router: Router){};
+
     onSave(form: NgForm) {
         const editedUser = new User(
 

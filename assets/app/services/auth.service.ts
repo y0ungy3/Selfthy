@@ -44,6 +44,16 @@ export class AuthService {
         return localStorage.getItem('token') !== null;
     }
 
+    isAuthenticated() {
+        const promise = new Promise(
+            (resolve, reject) => {
+                resolve(this.isLoggedIn());
+                reject(console.log('rejected'))
+            }
+        );
+        return promise;
+    }
+
     getUser(username: String) {
         return this.http.get('http://localhost:3000/user/' + username )
             .map((response: Response) => {

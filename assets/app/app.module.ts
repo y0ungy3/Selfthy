@@ -18,6 +18,7 @@ import {ErrorService} from "./services/error.service";
 import {ProfileComponent} from "./profile/profile.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {EditProfileComponent} from "./profile/edit-profile/edit-profile.component";
+import {AuthGuardService} from "./services/auth-guard.service";
 
 @NgModule({
     declarations: [
@@ -35,7 +36,7 @@ import {EditProfileComponent} from "./profile/edit-profile/edit-profile.componen
     ],
     imports: [BrowserModule, HttpModule, routing, FormsModule],
     bootstrap: [AppComponent],
-    providers: [ItemService, AuthService, ErrorService]
+    providers: [ItemService, ErrorService, AuthGuardService, AuthService]
 })
 export class AppModule {
 
