@@ -5,11 +5,15 @@
         <p><b>{{user?.username}}</b></p>
         <p>Views: {{user?.views || 0}}</p>
         <p>{{user?.description}}</p>
-        <p>Links to personal websites:</p>
-        <ul>
-            <li>www.tumblr.com</li>
-        </ul>
     </div>
+
+
+    <div class="row">
+        <div class="col-sm-6" *ngFor="let item of allItems">
+            <app-socialMedia></app-socialMedia>
+        </div>
+    </div>
+
 
     <div class="row">
         <div class="col-xl-12">

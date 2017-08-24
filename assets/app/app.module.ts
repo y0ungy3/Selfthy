@@ -20,6 +20,7 @@ import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {EditProfileComponent} from "./profile/edit-profile/edit-profile.component";
 import {AuthGuardService} from "./services/auth-guard.service";
 import {CanDeactivateGuard} from "./services/can-deactivate-guard.service";
+import {SocialMediaComponent} from "./profile/social-media/social-media.component";
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import {CanDeactivateGuard} from "./services/can-deactivate-guard.service";
         ErrorComponent,
         ProfileComponent,
         PageNotFoundComponent,
-        EditProfileComponent
+        EditProfileComponent,
+        SocialMediaComponent
     ],
     imports: [BrowserModule, HttpModule, routing, FormsModule],
     bootstrap: [AppComponent],

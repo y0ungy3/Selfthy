@@ -4,6 +4,7 @@ import {User} from "../models/User";
 import {AuthService} from "../services/auth.service";
 import {Item} from "../models/Item";
 import {ItemService} from "../services/item.service";
+import {SocialMedia} from "../models/SocialMedia";
 @Component({
     selector: 'app-profile',
     templateUrl: './profile.component.html',
@@ -17,6 +18,7 @@ export class ProfileComponent implements OnInit {
     private defaultPic = require('../../images/default-pic.jpg');
     private user: User;
     private allItems: Item[] = [];
+    private allSocialMedias: SocialMedia[] = [];
     private isUser: boolean = false;
 
     ngOnInit() {

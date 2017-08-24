@@ -8,9 +8,15 @@ import {User} from "../../models/User";
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
     constructor(private authService: AuthService, private router: Router){};
+
+    ngOnInit() {
+        if(this.authService.isLoggedIn()) {
+            this.router.navigateByUrl('/home');
+        }
+    }
 
     onLogin(form: NgForm) {
         const user = new User(null, form.value.email, form.value.password);
