@@ -5,6 +5,7 @@ import {AuthService} from "../services/auth.service";
 import {Item} from "../models/Item";
 import {ItemService} from "../services/item.service";
 import {SocialMedia} from "../models/SocialMedia";
+import {SocialMediaService} from "../services/social-media.service";
 @Component({
     selector: 'app-profile',
     templateUrl: './profile.component.html',
@@ -12,7 +13,7 @@ import {SocialMedia} from "../models/SocialMedia";
 })
 export class ProfileComponent implements OnInit {
     constructor(private route: ActivatedRoute, private authService: AuthService, private itemService: ItemService,
-                private router: Router) {
+                private router: Router, private socialService: SocialMediaService) {
     };
 
     private defaultPic = require('../../images/default-pic.jpg');
@@ -33,7 +34,18 @@ export class ProfileComponent implements OnInit {
         // this is called when the component is first called
         // it wont be called again if the url changes to a different user, that's the observable function above
         this.getUser(username);
+    }
 
+    getUserSocialMedias(userId: String) {
+        this.socialService.getSocialMedias(userId)
+            .subscribe(
+                (socialMedias: SocialMedia) => {
+                    this.allSocialMedias = socialMedias;
+                },
+                (error) => {
+                    console.log("Error getting social medias for a user")
+                }
+            );
     }
 
     onEdit() {
@@ -63,6 +75,8 @@ export class ProfileComponent implements OnInit {
                                 console.log(error)
                             }
                         );
+
+                    this.getUserSocialMedias(user.userId);
                 },
                 (error) => {
                     this.router.navigateByUrl('/not-found');

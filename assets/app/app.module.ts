@@ -21,6 +21,9 @@ import {EditProfileComponent} from "./profile/edit-profile/edit-profile.componen
 import {AuthGuardService} from "./services/auth-guard.service";
 import {CanDeactivateGuard} from "./services/can-deactivate-guard.service";
 import {SocialMediaComponent} from "./profile/social-media/social-media.component";
+import {SocialMediaService} from "./services/social-media.service";
+import {WebsiteModalComponent} from "./website-modal/website-modal.component";
+import {WebsiteModalService} from "./services/website-modal.service";
 
 @NgModule({
     declarations: [
@@ -35,11 +38,12 @@ import {SocialMediaComponent} from "./profile/social-media/social-media.componen
         ProfileComponent,
         PageNotFoundComponent,
         EditProfileComponent,
-        SocialMediaComponent
+        SocialMediaComponent,
+        WebsiteModalComponent
     ],
     imports: [BrowserModule, HttpModule, routing, FormsModule],
     bootstrap: [AppComponent],
-    providers: [ItemService, ErrorService, AuthGuardService, AuthService, CanDeactivateGuard]
+    providers: [ItemService, ErrorService, AuthGuardService, AuthService, CanDeactivateGuard, SocialMediaService, WebsiteModalService]
 })
 export class AppModule {
 

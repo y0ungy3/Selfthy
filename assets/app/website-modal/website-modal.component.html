@@ -1,0 +1,33 @@
+<div class="backdrop" [ngStyle]="{'display': displayed}"></div>
+<div [ngStyle]="{'display': displayed}" class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Website</h5>
+                <button type="button" class="close" aria-label="Close" (click)="onClose()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #f="ngForm">
+                    <div class="form-group">
+                        <label for="title" class="form-control-label">Title:</label>
+                        <input type="text" class="form-control" id="title" name="title" ngModel required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="form-control-label">Description:</label>
+                        <textarea class="form-control" rows="5" id="description" name="description" ngModel></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="link" class="form-control-label">Link:</label>
+                        <input type="url" class="form-control" id="link" name="link" ngModel required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="onClose()">Close</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!f.valid" (click)="onSave(f)">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

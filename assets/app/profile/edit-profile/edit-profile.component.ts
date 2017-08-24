@@ -7,6 +7,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
 import {CanDeactivateInterface} from "../../services/can-deactivate-guard.service";
 import {Observable} from "rxjs";
+import {WebsiteModalService} from "../../services/website-modal.service";
+import {SocialMedia} from "../../models/SocialMedia";
+import {SocialMediaService} from "../../services/social-media.service";
 
 @Component({
     selector: 'app-editProfile',
@@ -17,10 +20,13 @@ export class EditProfileComponent implements CanDeactivateInterface{
 
     private defaultPic = require('../../../images/default-pic.jpg');
     private allItems: Item[] = [];
+    private allSocialMedias: SocialMedia[] = [];
     private user: User;
     changesSaved = false;
 
-    constructor(private itemService: ItemService, private authService: AuthService, private route: ActivatedRoute, private router: Router){};
+    constructor(private itemService: ItemService, private authService: AuthService,
+                private route: ActivatedRoute, private router: Router,
+                private websiteModalService: WebsiteModalService, private socialMediaService: SocialMediaService){};
 
     onSave(form: NgForm) {
         const editedUser = new User(
@@ -56,9 +62,17 @@ export class EditProfileComponent implements CanDeactivateInterface{
                                     this.allItems = items;
                                 }
                             );
+                        this.getUserSocialMedias(user.userId);
                     }
                 }
             );
+        let self = this;
+        this.socialMediaService.socialUpdated.subscribe(
+            (social: SocialMedia) => {
+                this.allSocialMedias.push(social);
+            }
+        );
+
     }
 
     deletePost(item: Item) {
@@ -78,5 +92,22 @@ export class EditProfileComponent implements CanDeactivateInterface{
         } else {
             return true;
         }
+    }
+
+    onAddWebsite() {
+        const social = new SocialMedia();
+        this.websiteModalService.callModal(social);
+    }
+
+    getUserSocialMedias(userId: String) {
+        this.socialMediaService.getSocialMedias(userId)
+            .subscribe(
+                (socialMedias: SocialMedia) => {
+                    this.allSocialMedias = socialMedias;
+                },
+                (error) => {
+                    console.log("Error getting social medias for a user")
+                }
+            );
     }
 }

@@ -3,7 +3,7 @@ var router = express.Router();
 var jwt = require('jsonwebtoken');
 
 var User = require('../models/user');
-var SocialMedia = require('../model/socialMedia');
+var SocialMedia = require('../models/socialMedia');
 
 // get posts from one particular user
 router.get('/:userId', function(req, res, next) {

@@ -7,4 +7,8 @@ import {SocialMedia} from "../../models/SocialMedia";
 })
 export class SocialMediaComponent {
     @Input() socialMedia: SocialMedia;
+
+    openUrl() {
+       window.location.href = "www.cnn.com";
+    }
 }
