@@ -9,6 +9,15 @@ export class SocialMediaComponent {
     @Input() socialMedia: SocialMedia;
 
     openUrl() {
-       window.location.href = "www.cnn.com";
+        let url: string = '';
+        // test if the link has http in it or not
+        if (!/^http[s]?:\/\//.test(this.socialMedia.link)) {
+            url += 'http://';
+        }
+
+        // if it doesnt then add http to it
+        url = url + this.socialMedia.link;
+        console.log(url);
+        window.open(url, '_blank');
     }
 }
