@@ -16,7 +16,7 @@ const APP_ROUTES: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'registration', component: RegistrationComponentt},
     {path: 'not-found', component: PageNotFoundComponent},
-    {path: 'edit/:username', camActivate: [AuthGuardService], canDeactivate: [CanDeactivateGuard], component: EditProfileComponent},
+    {path: 'edit/:username', camActivate: [AuthGuardService], component: EditProfileComponent},
     {path: ':username', component: ProfileComponent},
     {path: '**', redirectTo: '/not-found'}
 ];

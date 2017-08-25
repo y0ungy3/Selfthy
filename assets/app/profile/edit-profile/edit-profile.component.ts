@@ -16,7 +16,7 @@ import {SocialMediaService} from "../../services/social-media.service";
     templateUrl: './edit-profile.component.html',
     styleUrls: ['./edit-profile.component.css']
 })
-export class EditProfileComponent implements CanDeactivateInterface{
+export class EditProfileComponent implements CanDeactivateInterface {
 
     private defaultPic = require('../../../images/default-pic.jpg');
     private allItems: Item[] = [];
@@ -26,16 +26,18 @@ export class EditProfileComponent implements CanDeactivateInterface{
 
     constructor(private itemService: ItemService, private authService: AuthService,
                 private route: ActivatedRoute, private router: Router,
-                private websiteModalService: WebsiteModalService, private socialMediaService: SocialMediaService){};
+                private websiteModalService: WebsiteModalService, private socialMediaService: SocialMediaService) {
+    };
 
     onSave(form: NgForm) {
-        const editedUser = new User(
-
-        );
-        this.authService.updateUser(editedUser)
+        console.log(form.value.description);
+        this.user.description = form.value.description;
+        this.authService.updateUser(this.user)
             .subscribe(
-                this.changesSaved = true,
-                this.router.navigateByUrl('/' + this.user.username)
+                (user: User) => {
+                    this.changesSaved = true;
+                    this.router.navigateByUrl('/' + this.user.username)
+                }
             );
     }
 
@@ -51,7 +53,7 @@ export class EditProfileComponent implements CanDeactivateInterface{
                 (user: User) => {
                     this.user = user;
                     // if this person is not the actual user then dont let him edit
-                    if(!this.belongsToUser(user)) {
+                    if (!this.belongsToUser(user)) {
                         this.router.navigateByUrl('/home');
                     }
                     else {
@@ -78,7 +80,9 @@ export class EditProfileComponent implements CanDeactivateInterface{
     deletePost(item: Item) {
         this.itemService.deleteItem(item)
             .subscribe(
-                (theItem) => {this.allItems.splice(this.allItems.indexOf(theItem), 1)}
+                (theItem) => {
+                    this.allItems.splice(this.allItems.indexOf(theItem), 1)
+                }
             );
     }
 
@@ -87,7 +91,7 @@ export class EditProfileComponent implements CanDeactivateInterface{
     }
 
     canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
-        if(!this.changesSaved) {
+        if (!this.changesSaved) {
             return confirm("Do you want to stop editing and discard any changes you might have made?");
         } else {
             return true;

@@ -74,4 +74,45 @@ router.get('/:username', function (req, res, next) {
     })
 });
 
+
+// Update a user
+router.patch('/:id', function (req, res, next) {
+    var decoded = jwt.decode(req.query.token);
+    // find the user
+    User.findById(req.params.id, function (err, user) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occurred',
+                error: err
+            });
+        }
+        if (!user) {
+            return res.status(500).json({
+                title: 'No user found',
+                error: {message: 'User not found'}
+            });
+        }
+        // check if the userID that the message belongs to is equal
+        if (user._id != decoded.user._id) {
+            return res.status(401).json({
+                title: 'Not authenticated',
+                error: {message: 'users do not match'}
+            });
+        }
+        user.description = req.body.description;
+        user.save(function (err, result) {
+            if (err) {
+                return res.status(500).json({
+                    title: 'Error trying to update user',
+                    error: {message: 'Error trying to update user'}
+                });
+            }
+            res.status(200).json({
+                message: 'Updated user successfully',
+                obj: result
+            });
+        })
+    })
+});
+
 module.exports = router;
