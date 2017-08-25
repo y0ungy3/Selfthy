@@ -1,4 +1,5 @@
 var express = require('express');
+var helmet = require('helmet');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -12,6 +13,7 @@ var userRoute = require('./routes/user');
 var socialMediaRoute = require('./routes/socialMedia');
 
 var app = express();
+app.use(helmet());
 mongoose.connect('localhost:27017/self-ad');
 
 // view engine setup

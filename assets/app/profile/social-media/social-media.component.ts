@@ -17,7 +17,6 @@ export class SocialMediaComponent {
 
         // if it doesnt then add http to it
         url = url + this.socialMedia.link;
-        console.log(url);
         window.open(url, '_blank');
     }
 }

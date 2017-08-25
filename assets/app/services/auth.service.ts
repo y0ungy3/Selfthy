@@ -48,7 +48,6 @@ export class AuthService {
         const promise = new Promise(
             (resolve, reject) => {
                 resolve(this.isLoggedIn());
-                reject(console.log('rejected'))
             }
         );
         return promise;

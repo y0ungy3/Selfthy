@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
     private allItems: Item[] = [];
     private allSocialMedias: SocialMedia[] = [];
     private isUser: boolean = false;
+    private views: String;
 
     ngOnInit() {
         // get the user's information
