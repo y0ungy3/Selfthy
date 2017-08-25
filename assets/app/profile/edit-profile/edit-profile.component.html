@@ -21,6 +21,7 @@
     <div class="row">
         <div class="col-sm-6" *ngFor="let social of allSocialMedias">
             <app-socialMedia [socialMedia]="social"></app-socialMedia>
+            <button type="button" class="btn btn-danger" (click)="onDeleteSocial(social)">Delete</button>
         </div>
     </div>
 
@@ -33,7 +34,10 @@
 
     <div class="row">
         <div class="col-lg-4 portfolio-item" *ngFor="let item of allItems">
-            <app-item [anItem]="item"></app-item>
+            <div>
+                <img class="img-fluid" [src]="item.picture" alt=""/>
+                <p>{{item?.description}}</p>
+            </div>
             <button class="btn btn-danger" type="button" (click)="deletePost(item)">Delete</button>
         </div>
     </div>

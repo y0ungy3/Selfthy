@@ -30,7 +30,6 @@ export class EditProfileComponent implements CanDeactivateInterface {
     };
 
     onSave(form: NgForm) {
-        console.log(form.value.description);
         this.user.description = form.value.description;
         this.authService.updateUser(this.user)
             .subscribe(
@@ -86,17 +85,26 @@ export class EditProfileComponent implements CanDeactivateInterface {
             );
     }
 
+    onDeleteSocial(social: SocialMedia) {
+        this.socialMediaService.deleteSocialMedia(social)
+            .subscribe(
+                (social: SocialMedia) => {
+                    this.allSocialMedias.splice(this.allSocialMedias.indexOf(social), 1)
+                }
+            );
+    }
+
     belongsToUser(user: User) {
         return localStorage.getItem('userId') == user.userId;
     }
 
-    canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    /*canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
         if (!this.changesSaved) {
             return confirm("Do you want to stop editing and discard any changes you might have made?");
         } else {
             return true;
         }
-    }
+    }*/
 
     onAddWebsite() {
         const social = new SocialMedia();
