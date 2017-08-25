@@ -32,9 +32,6 @@ export class ProfileComponent implements OnInit {
                 this.getUser(username);
             }
         );
-        // this is called when the component is first called
-        // it wont be called again if the url changes to a different user, that's the observable function above
-        this.getUser(username);
     }
 
     getUserSocialMedias(userId: String) {
@@ -65,6 +62,15 @@ export class ProfileComponent implements OnInit {
 
                     // check if the person viewing this profile is the actual user or someone else
                     this.isUser = this.belongsToUser(user);
+
+                    // if not the logged in user, then increment the number of views
+                    if (!this.isUser) {
+                        this.authService.updateView(user).subscribe(
+                            (user: User) => {
+                                this.views = user.views;
+                            }
+                        );
+                    }
 
                     // get all posts for this particular user
                     this.itemService.getItems(user.userId)

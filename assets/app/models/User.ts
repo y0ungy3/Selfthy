@@ -9,6 +9,6 @@ export class User {
         public links?: SocialMedia[],
         public userId?: String,
         public items?: Item[],
-        public views?: String
+        public views?: Number
     ){};
 }
