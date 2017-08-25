@@ -2,8 +2,7 @@ import {SocialMedia} from "./SocialMedia";
 import {Item} from "./Item";
 export class User {
     constructor(
-        public username?: String,
-        public email: String,
+        public username: String,
         public password: String,
         public description?: String,
         public picture?: any,

@@ -22,7 +22,7 @@ export class EditProfileComponent implements CanDeactivateInterface {
     private allItems: Item[] = [];
     private allSocialMedias: SocialMedia[] = [];
     private user: User;
-    changesSaved = false;
+    //changesSaved = false;
 
     constructor(private itemService: ItemService, private authService: AuthService,
                 private route: ActivatedRoute, private router: Router,
@@ -34,7 +34,7 @@ export class EditProfileComponent implements CanDeactivateInterface {
         this.authService.updateUser(this.user)
             .subscribe(
                 (user: User) => {
-                    this.changesSaved = true;
+                    //this.changesSaved = true;
                     this.router.navigateByUrl('/' + this.user.username)
                 }
             );

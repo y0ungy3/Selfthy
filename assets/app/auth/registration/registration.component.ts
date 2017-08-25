@@ -23,7 +23,6 @@ export class RegistrationComponentt implements OnInit {
         if (form.value.password == form.value.retypePassword) {
             const user = new User(
                 form.value.username,
-                form.value.email,
                 form.value.password
             );
             this.authService.register(user)

@@ -60,7 +60,6 @@ export class AuthService {
                 const user = response.json().obj;
                 const transformedUser = new User(
                         user[0].username,
-                        user[0].email,
                         null,
                         user[0].description,
                         user[0].picture,

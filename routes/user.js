@@ -9,14 +9,13 @@ var User = require('../models/user');
 router.post('/', function (req, res, next) {
     const user = new User({
             username: req.body.username,
-            email: req.body.email,
             password: bcrypt.hashSync(req.body.password, 10)
         }
     );
     user.save(function (err, result) {
         if (err) {
             return res.status(500).json({
-                title: 'Email or username already existed. Please login if you already have an account',
+                title: 'Username already existed. Please login if you already have an account or create a new one',
                 error: err
             });
         }
@@ -29,7 +28,7 @@ router.post('/', function (req, res, next) {
 
 // user login
 router.post('/login', function (req, res, next) {
-    User.findOne({email: req.body.email}, function (err, user) {
+    User.findOne({username: req.body.username}, function (err, user) {
         if (err) {
             res.status(500).json({
                 title: 'An error occurred',
