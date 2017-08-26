@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <button class="btn btn-secondary" type="button" *ngIf="isUser" (click)="onEdit()">Edit Profile</button>
     <div style="text-align: center">
-        <img [src]="defaultPic || user.picture" alt="Mountain View" style="width:304px;height:228px;">
+        <img [src]="user?.picture" alt="profile picture" style="width:304px;height:228px;">
         <p><b>{{user?.username}}</b></p>
         <p>Views: {{user?.views || 0}}</p>
         <p>{{user?.description}}</p>
@@ -32,3 +32,47 @@
     </div>
 
 </div>
+
+
+<!--
+<div class="rela-block container">
+    <div class="rela-block profile-card">
+        <div class="profile-pic" style="background: defaultPic" id="profile_pic"></div>
+        <div class="rela-block profile-name-container">
+            <div class="rela-block user-name" id="user_name">User Name Here</div>
+            <div class="rela-block user-desc" id="user_description">User Description Here</div>
+        </div>
+        <div class="rela-block profile-card-stats">
+            <div class="floated profile-stat works" id="num_works">28<br></div>
+            <div class="floated profile-stat followers" id="num_followers">112<br></div>
+            <div class="floated profile-stat following" id="num_following">245<br></div>
+        </div>
+    </div>
+    <div class="rela-block content">
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+        <div class="rela-inline image"></div>
+    </div>
+    <div class="rela-inline button more-images" onclick="add_images(); inf_scroll = true;">More Images</div>
+</div>-->

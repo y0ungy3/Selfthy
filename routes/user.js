@@ -51,6 +51,7 @@ router.post('/login', function (req, res, next) {
     });
 });
 
+// get a user
 router.get('/:username', function (req, res, next) {
     User.find({username: req.params.username}, function (err, user) {
         if (err) {
@@ -73,8 +74,44 @@ router.get('/:username', function (req, res, next) {
     })
 });
 
+// update the number of view for a user profile
+router.patch('/views/:username', function(req, res, next) {
+    User.findOneAndUpdate({username : req.params.username}, {$inc : {'views' : 1}}, {new: true}, function(err, user) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occurred while trying to update the number of views',
+                error: {message: 'An error occurred while trying to update the number of views'}
+            });
+        }
+        if (!user) {
+            return res.status(500).json({
+                title: 'No user found',
+                error: {message: 'User not found'}
+            });
+        }
+        res.status(200).json({
+            message: 'Updated view successfully',
+            obj: user
+        });
+    })
+});
 
-// Update a user
+// all routers below this one will have to go through this one
+// first before reaching other router
+router.use('/', function (req, res, next) {
+    // this checks if this is a valid token
+    jwt.verify(req.query.token, '8gYxCLG9ehODLzJ9HGpf', function (err, decoded) {
+        if (err) {
+            return res.status(401).json({
+                title: 'Not Authenticated',
+                error: {message: 'User not Authenticated'}
+            });
+        }
+        next();
+    })
+});
+
+// Update a user's description and profile picture
 router.patch('/:id', function (req, res, next) {
     var decoded = jwt.decode(req.query.token);
     // find the user
@@ -99,6 +136,7 @@ router.patch('/:id', function (req, res, next) {
             });
         }
         user.description = req.body.description;
+        user.picture = req.body.picture;
         user.save(function (err, result) {
             if (err) {
                 return res.status(500).json({
@@ -114,27 +152,5 @@ router.patch('/:id', function (req, res, next) {
     })
 });
 
-
-// update the number of view for a user profile
-router.patch('/views/:username', function(req, res, next) {
-    User.findOneAndUpdate({username : req.params.username}, {$inc : {'views' : 1}}, {new: true}, function(err, user) {
-        if (err) {
-            return res.status(500).json({
-                title: 'An error occurred while trying to update the number of views',
-                error: {message: 'An error occurred while trying to update the number of views'}
-            });
-        }
-        if (!user) {
-            return res.status(500).json({
-                title: 'No user found',
-                error: {message: 'User not found'}
-            });
-        }
-        res.status(200).json({
-            message: 'Updated view successfully',
-            obj: user
-        });
-    })
-});
 
 module.exports = router;

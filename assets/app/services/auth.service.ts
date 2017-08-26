@@ -77,6 +77,7 @@ export class AuthService {
             });
     }
 
+    // update user's description and profile pic
     updateUser(user: User) {
         const body = JSON.stringify(user);
         const headers = new Headers({'Content-Type': 'application/json'});
@@ -95,7 +96,6 @@ export class AuthService {
         return this.http.patch('http://localhost:3000/user/views/' + user.username, body, {headers: headers})
             .map((response: Response) => {
                 const user = response.json().obj;
-                console.log(user.views);
                 return user.views;
             })
             .catch((error: Response) => {

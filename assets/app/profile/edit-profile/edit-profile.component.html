@@ -8,7 +8,10 @@
         </div>
 
         <div style="text-align: center">
-            <img [src]="defaultPic || user.picture" alt="profile picture" style="width:304px;height:228px;">
+            <img [src]="user?.picture" alt="profile picture" style="width:304px;height:228px;">
+            <label class="btn btn-primary">Browse
+                <input type='file' accept=".jpg,.jpeg,.png" (change)="readImage($event)" style="display: none;">
+            </label>
             <p><b>{{user?.username}}</b></p>
             <label for="description">Description</label>
             <textarea id="description" class="form-control" rows="3" name="description" [ngModel]="user?.description"></textarea>

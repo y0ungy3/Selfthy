@@ -17,10 +17,13 @@ export class UploadComponent {
     onPost(form: NgForm) {
        const item = {picture: this.img, description: form.value.description};
         this.itemService.addItem(item).subscribe(
-            data => console.log(data),
+            data => {
+                form.resetForm();
+                this.img = null;
+            },
             error => console.log(error)
         );
-        form.resetForm();
+
     }
 
     readImage(event) {

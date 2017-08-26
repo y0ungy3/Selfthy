@@ -122,4 +122,15 @@ export class EditProfileComponent implements CanDeactivateInterface {
                 }
             );
     }
+
+
+    readImage(event) {
+        if (event.target.files && event.target.files[0]) {
+            let reader = new FileReader();
+            reader.readAsDataURL(event.target.files[0]);
+            reader.onload = (event:any) => {
+                this.user.picture = event.target.result;
+            };
+        }
+    }
 }
