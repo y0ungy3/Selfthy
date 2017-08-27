@@ -47,7 +47,12 @@ export class ProfileComponent implements OnInit {
     }
 
     onEdit() {
-        this.router.navigateByUrl("/edit/" + this.user.username);
+        if(this.authService.isLoggedIn()) {
+            this.router.navigateByUrl("/edit/" + this.user.username);
+        } else {
+            this.router.navigateByUrl('/login');
+        }
+
     }
 
     belongsToUser(user: User) {

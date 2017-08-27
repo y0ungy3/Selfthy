@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <button class="btn btn-secondary" type="button" *ngIf="isUser" (click)="onEdit()">Edit Profile</button>
     <div style="text-align: center">
-        <img [src]="user?.picture" alt="profile picture" style="width:304px;height:228px;">
+        <img [src]="user?.picture || defaultPic" alt="profile picture" style="width:304px;height:228px;">
         <p><b>{{user?.username}}</b></p>
         <p>Views: {{user?.views || 0}}</p>
         <p>{{user?.description}}</p>
