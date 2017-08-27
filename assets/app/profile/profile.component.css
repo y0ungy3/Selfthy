@@ -199,18 +199,7 @@ body {
     width: 100%;
     max-width: 1400px;
 }
-.logo {
-    font-family: "Yellowtail";
-    font-size: 34px;
-    letter-spacing: 0px;
-    font-weight: 400;
-    line-height: 70px;
-    margin: 0 30px;
-    cursor: pointer;
-}
-.logo:hover {
-    color: #2ebaae;
-}
+
 .nav-div {
     font-family: "Roboto";
     font-size: 17px;
@@ -374,26 +363,15 @@ body {
 }
 .profile-card {
     width: calc(100% - 40px);
-    padding-top: 100px;
     margin: 70px auto 30px;
     background-color: #fff;
     box-shadow: 0 2px 6px -2px rgba(0,0,0,0.26);
 }
 .profile-pic {
-    display: false;
-    position: absolute;
-    margin: false;
-    top: -90px;
-    left: 50%;
-    right: false;
-    bottom: false;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
-    height: 180px;
-    width: 180px;
-    border: 10px solid #fff;
-    border-radius: 100%;
-    background-size: cover;
+    object-fit: cover;
+    width:314px;
+    height:238px;
+    border-radius:40%;
 }
 .profile-name-container {
     margin: 0 auto 10px;
@@ -425,17 +403,17 @@ body {
 .profile-stat:after {
     color: #999;
 }
-.works::after {
-    content: "works";
+.websites::after {
+    content: "Websites";
 }
-.followers::after {
-    content: "followers";
+.ads::after {
+    content: "Ads";
 }
-.following::after {
-    content: "following";
+.views::after {
+    content: "Views";
 }
 .image {
-    width: 240px;
+    width: 200px;
     height: 200px;
     cursor: pointer;
     margin: 0 20px 40px;

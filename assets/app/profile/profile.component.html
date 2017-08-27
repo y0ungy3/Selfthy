@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!--<div class="container-fluid">
     <button class="btn btn-secondary" type="button" *ngIf="isUser" (click)="onEdit()">Edit Profile</button>
     <div style="text-align: center">
         <img [src]="user?.picture || defaultPic" alt="profile picture" style="width:304px;height:228px;">
@@ -31,48 +31,48 @@
         </div>
     </div>
 
+</div>-->
+
+<button class="btn btn-secondary" type="button" *ngIf="isUser" (click)="onEdit()">Edit Profile</button>
+<div class="rela-block profile-card">
+    <div style="text-align: center">
+        <img class="profile-pic" [src]="user?.picture || defaultPic" alt="profile picture">
+    </div>
+
+    <div class="rela-block profile-name-container">
+        <div class="rela-block user-name" id="user_name">{{user?.username}}</div>
+        <div class="rela-block user-desc" id="user_description">{{user?.description}}</div>
+    </div>
+    <div class="rela-block profile-card-stats">
+        <div class="floated profile-stat websites" id="num_works">28<br></div>
+        <div class="floated profile-stat ads" id="num_followers">112<br></div>
+        <div class="floated profile-stat views" id="num_following">245<br></div>
+    </div>
 </div>
 
+<div class="rela-block content">
 
-<!--
-<div class="rela-block container">
-    <div class="rela-block profile-card">
-        <div class="profile-pic" style="background: defaultPic" id="profile_pic"></div>
-        <div class="rela-block profile-name-container">
-            <div class="rela-block user-name" id="user_name">User Name Here</div>
-            <div class="rela-block user-desc" id="user_description">User Description Here</div>
-        </div>
-        <div class="rela-block profile-card-stats">
-            <div class="floated profile-stat works" id="num_works">28<br></div>
-            <div class="floated profile-stat followers" id="num_followers">112<br></div>
-            <div class="floated profile-stat following" id="num_following">245<br></div>
+    <h3 style="text-align: center">Personal Websites</h3>
+    <div class="row">
+        <div class="col-sm-6" *ngFor="let social of allSocialMedias">
+            <app-socialMedia [socialMedia]="social"></app-socialMedia>
         </div>
     </div>
-    <div class="rela-block content">
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
-        <div class="rela-inline image"></div>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <h3 style="text-align: center">Uploaded</h3>
+        </div>
     </div>
-    <div class="rela-inline button more-images" onclick="add_images(); inf_scroll = true;">More Images</div>
-</div>-->
+
+    <!--<div class="rela-inline image"></div>-->
+    <div class="row">
+        <div class="col-lg-4 portfolio-item" *ngFor="let item of allItems">
+            <div>
+                <img class="img-fluid" [src]="item.picture" alt=""/>
+                <p>{{item?.description}}</p>
+            </div>
+        </div>
+    </div>
+
+</div>

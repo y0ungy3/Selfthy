@@ -1,0 +1,33 @@
+.navbar {
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 12px 6px -6px #999;
+
+    /* the rest of your styling */
+}
+
+.logo {
+    font-family: "Yellowtail";
+    font-size: 24px;
+    letter-spacing: 0px;
+    font-weight: 400;
+    margin: 0 30px;
+    cursor: pointer;
+}
+.logo:hover {
+    color: #2ebaae;
+}
+
+.floated {
+    display: inline-block;
+    position: relative;
+    margin: false;
+    top: ;
+    left: ;
+    right: ;
+    bottom: ;
+    float: left;
+}
+.floated.right {
+    float: right;
+}

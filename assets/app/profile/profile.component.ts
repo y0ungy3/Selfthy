@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
 
     private defaultPic = require('../../images/default-pic.jpg');
     private user: User;
+    private avatar;
     private allItems: Item[] = [];
     private allSocialMedias: SocialMedia[] = [];
     private isUser: boolean = false;
@@ -64,7 +65,7 @@ export class ProfileComponent implements OnInit {
             .subscribe(
                 (user: User) => {
                     this.user = user;
-
+                    this.avatar = user.picture;
                     // check if the person viewing this profile is the actual user or someone else
                     this.isUser = this.belongsToUser(user);
 
