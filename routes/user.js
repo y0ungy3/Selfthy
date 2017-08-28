@@ -96,20 +96,6 @@ router.patch('/views/:username', function(req, res, next) {
     })
 });
 
-// all routers below this one will have to go through this one
-// first before reaching other router
-router.use('/', function (req, res, next) {
-    // this checks if this is a valid token
-    jwt.verify(req.query.token, '8gYxCLG9ehODLzJ9HGpf', function (err, decoded) {
-        if (err) {
-            return res.status(401).json({
-                title: 'Not Authenticated',
-                error: {message: 'User not Authenticated'}
-            });
-        }
-        next();
-    })
-});
 
 // Update a user's description and profile picture
 router.patch('/:id', function (req, res, next) {
