@@ -9,10 +9,7 @@ import {ErrorService} from "./error.service";
 @Injectable()
 export class AuthService {
 
-    private user: User;
-
-    constructor(private http: Http, private errorService: ErrorService) {
-    };
+    constructor(private http: Http, private errorService: ErrorService) {};
 
     register(user: User) {
         let body = JSON.stringify(user);
@@ -62,13 +59,9 @@ export class AuthService {
                     user[0].username,
                     null,
                     user[0].description,
-                    user[0].picture,
-                    user[0].links,
-                    user[0]._id,
-                    user[0].items,
-                    user[0].views
+                    user[0].views,
+                    user[0]._id
                 );
-                this.user = transformedUser;
                 return transformedUser;
             })
             .catch((error: Response) => {

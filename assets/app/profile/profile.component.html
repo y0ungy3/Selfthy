@@ -1,45 +1,6 @@
-<!--<div class="container-fluid">
-    <button class="btn btn-secondary" type="button" *ngIf="isUser" (click)="onEdit()">Edit Profile</button>
-    <div style="text-align: center">
-        <img [src]="user?.picture || defaultPic" alt="profile picture" style="width:304px;height:228px;">
-        <p><b>{{user?.username}}</b></p>
-        <p>Views: {{user?.views || 0}}</p>
-        <p>{{user?.description}}</p>
-    </div>
-
-    <h3 style="text-align: center">Personal Websites</h3>
-    <div class="row">
-        <div class="col-sm-6" *ngFor="let social of allSocialMedias">
-            <app-socialMedia [socialMedia]="social"></app-socialMedia>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-xl-12">
-            <h1 class="page-header">Uploaded
-            </h1>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-4 portfolio-item" *ngFor="let item of allItems">
-            <div>
-                <img class="img-fluid" [src]="item.picture" alt=""/>
-                <p>{{item?.description}}</p>
-            </div>
-        </div>
-    </div>
-
-</div>-->
-
 <button class="btn btn-secondary" type="button" *ngIf="isUser" (click)="onEdit()">Edit Profile</button>
 <div class="rela-block profile-card">
-    <div style="text-align: center">
-        <img class="profile-pic" [src]="user?.picture || defaultPic" alt="profile picture">
-    </div>
-
-    <div class="rela-block profile-name-container">
+        <div class="rela-block profile-name-container">
         <div class="rela-block user-name" id="user_name">{{user?.username}}</div>
         <div class="rela-block user-desc" id="user_description">{{user?.description}}</div>
     </div>

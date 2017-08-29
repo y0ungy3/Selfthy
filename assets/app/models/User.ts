@@ -5,10 +5,7 @@ export class User {
         public username: String,
         public password: String,
         public description?: String,
-        public picture?: any,
-        public links?: SocialMedia[],
-        public userId?: String,
-        public items?: Item[],
-        public views?: Number
+        public views?: Number,
+        public userId?: String
     ){};
 }

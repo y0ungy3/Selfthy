@@ -4,7 +4,7 @@
     <strong>Uploaded!</strong> You can view your ad on the home page.
 </div>
 <div *ngIf="showBadAlert" class="alert alert-danger" role="alert">
-    <strong>Oops!</strong> Failed to upload the image.
+    <strong>Oops!</strong> Failed to upload the image. Maximum image size is 10MB
 </div>
 <form (ngSubmit)="onPost(f)" #f="ngForm">
     <div class="form-group">
@@ -15,11 +15,14 @@
 
     </div>
     <div class="form-group">
-        <img class="img-fluid" [src]="img">
+        <div class="col-lg-4 portfolio-item">
+            <img class="img-fluid" [src]="img">
+        </div>
     </div>
     <div class="form-group">
         <label for="description">Description</label>
-        <textarea class="form-control" id="description" rows="3" name="description" ngModel></textarea>
+        <textarea type="text" class="form-control" id="description" rows="3" name="description"  maxlength="200" [(ngModel)]="characterLeft"></textarea>
+        <span class="help-block">Max Length: {{characterLeft | CharacterCount:200}}</span>
     </div>
     <div class="form-group">
         <button class="btn btn-primary" type="submit" [disabled]="!img">Post</button>

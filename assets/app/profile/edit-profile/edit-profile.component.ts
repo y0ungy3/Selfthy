@@ -18,7 +18,6 @@ import {SocialMediaService} from "../../services/social-media.service";
 })
 export class EditProfileComponent implements CanDeactivateInterface {
 
-    private defaultPic = require('../../../images/default-pic.jpg');
     private allItems: Item[] = [];
     private allSocialMedias: SocialMedia[] = [];
     private user: User;
@@ -123,14 +122,4 @@ export class EditProfileComponent implements CanDeactivateInterface {
             );
     }
 
-
-    readImage(event) {
-        if (event.target.files && event.target.files[0]) {
-            let reader = new FileReader();
-            reader.readAsDataURL(event.target.files[0]);
-            reader.onload = (event:any) => {
-                this.user.picture = event.target.result;
-            };
-        }
-    }
 }

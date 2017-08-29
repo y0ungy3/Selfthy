@@ -41,6 +41,12 @@ router.post('/login', function (req, res, next) {
                 error: {message: 'Invalid login credentials'}
             });
         }
+        if (!bcrypt.compareSync(req.body.password, user.password)) {
+            return res.status(401).json({
+                title: 'Login failed',
+                error: {message: 'Invalid login credentials'}
+            });
+        }
         var token = jwt.sign({user: user}, '8gYxCLG9ehODLzJ9HGpf', {expiresIn: 7200});
         res.status(200).json({
             message: 'Successfully logged in',
@@ -97,7 +103,20 @@ router.patch('/views/:username', function(req, res, next) {
 });
 
 
-// Update a user's description and profile picture
+router.use('/', function (req, res, next) {
+    // this checks if this is a valid token
+    jwt.verify(req.query.token, '8gYxCLG9ehODLzJ9HGpf', function (err, decoded) {
+        if (err) {
+            return res.status(401).json({
+                title: 'Not Authenticated',
+                error: {message: 'User not Authenticated'}
+            });
+        }
+        next();
+    })
+});
+
+// Update a user's description
 router.patch('/:id', function (req, res, next) {
     var decoded = jwt.decode(req.query.token);
     // find the user
@@ -122,7 +141,6 @@ router.patch('/:id', function (req, res, next) {
             });
         }
         user.description = req.body.description;
-        user.picture = req.body.picture;
         user.save(function (err, result) {
             if (err) {
                 return res.status(500).json({

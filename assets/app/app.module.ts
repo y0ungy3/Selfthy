@@ -24,6 +24,7 @@ import {SocialMediaComponent} from "./profile/social-media/social-media.componen
 import {SocialMediaService} from "./services/social-media.service";
 import {WebsiteModalComponent} from "./website-modal/website-modal.component";
 import {WebsiteModalService} from "./services/website-modal.service";
+import {CharacterCount} from "./pipes/characterCount.pipe";
 
 @NgModule({
     declarations: [
@@ -39,7 +40,8 @@ import {WebsiteModalService} from "./services/website-modal.service";
         PageNotFoundComponent,
         EditProfileComponent,
         SocialMediaComponent,
-        WebsiteModalComponent
+        WebsiteModalComponent,
+        CharacterCount
     ],
     imports: [BrowserModule, HttpModule, routing, FormsModule],
     bootstrap: [AppComponent],

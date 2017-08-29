@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
 
 // get posts from one particular user
 router.get('/:userId', function(req, res, next) {
-    Item.find({user: req.params.userId}, function(err, items) {
+    Item.find({user: req.params.userId}, null, {sort: {createdAt: -1}}, function(err, items) {
         if (err) {
             return res.status(500).json({
                 title: 'An error occurred',
@@ -85,8 +85,6 @@ router.post('/', function (req, res, next) {
                     error: err
                 });
             }
-            user.items.push(result);
-            user.save();
             res.status(201).json({
                 message: 'Posted successfully',
                 obj: result

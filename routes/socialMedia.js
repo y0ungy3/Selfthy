@@ -68,8 +68,6 @@ router.post('/', function (req, res, next) {
                     error: {message: 'Error occurred while trying to save'}
                 });
             }
-            user.links.push(result);
-            user.save();
             res.status(201).json({
                 message: 'Posted successfully',
                 obj: result

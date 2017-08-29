@@ -16,6 +16,7 @@ export class UploadComponent {
     private img: any;
     private showAlert: boolean = false;
     private showBadAlert = false;
+    public characterLeft: String = '';
 
     onPost(form: NgForm) {
         if(this.authService.isLoggedIn()) {
@@ -24,6 +25,7 @@ export class UploadComponent {
                 data => {
                     this.img = null;
                     this.showAlert = true;
+                    this.characterLeft = '';
                     form.resetForm();
                 },
                 error => {
@@ -46,4 +48,5 @@ export class UploadComponent {
             };
         }
     }
+
 }

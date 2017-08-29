@@ -7,10 +7,7 @@ var schema = new Schema({
     username: {type: String, required: true, unique: true},
     password: {type: String, required: true},
     views: {type: Number},
-    picture: {type: Schema.Types.Mixed},
-    description: {type: String},
-    links: [{type: Schema.Types.ObjectId, ref: 'SocialMedia'}],
-    items: [{type: Schema.Types.ObjectId, ref: 'Item'}]
+    description: {type: String, maxLength: 400}
 });
 
 schema.pre('save', function(next){

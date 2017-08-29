@@ -16,9 +16,7 @@ export class ProfileComponent implements OnInit {
                 private router: Router, private socialService: SocialMediaService) {
     };
 
-    private defaultPic = require('../../images/default-pic.jpg');
     private user: User;
-    private avatar;
     private allItems: Item[] = [];
     private allSocialMedias: SocialMedia[] = [];
     private isUser: boolean = false;
@@ -30,6 +28,7 @@ export class ProfileComponent implements OnInit {
         this.route.params.subscribe(
             (params: Params) => {
                 username = params['username'];
+                console.log(username);
                 this.getUser(username);
             }
         );
@@ -65,7 +64,6 @@ export class ProfileComponent implements OnInit {
             .subscribe(
                 (user: User) => {
                     this.user = user;
-                    this.avatar = user.picture;
                     // check if the person viewing this profile is the actual user or someone else
                     this.isUser = this.belongsToUser(user);
 
