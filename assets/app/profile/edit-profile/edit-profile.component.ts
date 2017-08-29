@@ -37,10 +37,6 @@ export class EditProfileComponent implements CanDeactivateInterface {
             );
     }
 
-    onCancel() {
-        this.router.navigateByUrl('/' + this.user.username);
-    }
-
     ngOnInit() {
         // get the user's information
         const username = this.route.snapshot.params['username'];
@@ -75,11 +71,14 @@ export class EditProfileComponent implements CanDeactivateInterface {
 
     deletePost(item: Item) {
         this.itemService.deleteItem(item)
-            .subscribe(
-                (theItem) => {
-                    this.allItems.splice(this.allItems.indexOf(theItem), 1)
+            .subscribe((result) => {
+                    this.allItems.splice(this.allItems.indexOf(item), 1)
+                },
+                (error) => {
+                    console.log("Can't Delete")
                 }
-            );
+            )
+        ;
     }
 
     onDeleteSocial(social: SocialMedia) {

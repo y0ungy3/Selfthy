@@ -5,8 +5,8 @@
         <div class="rela-block user-desc" id="user_description">{{user?.description}}</div>
     </div>
     <div class="rela-block profile-card-stats">
-        <div class="floated profile-stat websites" id="num_works">28<br></div>
-        <div class="floated profile-stat ads" id="num_followers">112<br></div>
+        <div class="floated profile-stat websites" id="num_works">{{allSocialMedias.length || 0}}<br></div>
+        <div class="floated profile-stat ads" id="num_followers">{{allItems.length || 0}}<br></div>
         <div class="floated profile-stat views" id="num_following">{{user?.views}}<br></div>
     </div>
 </div>

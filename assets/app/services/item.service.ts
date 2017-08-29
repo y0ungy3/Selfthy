@@ -11,8 +11,6 @@ export class ItemService {
     constructor(private http: Http, private errorService: ErrorService) {
     };
 
-    private allItems: Item[] = [];
-
     // add an item to the database
     addItem(i: any) {
         const body = JSON.stringify(i);
@@ -84,7 +82,6 @@ export class ItemService {
     }
 
     deleteItem(item: Item) {
-        this.allItems.splice(this.allItems.indexOf(item), 1);
         const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
         return this.http.delete('http://localhost:3000/item/' + item.itemID + token)
             .map((response: Response) => response.json())

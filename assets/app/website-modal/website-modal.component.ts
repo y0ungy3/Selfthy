@@ -27,13 +27,14 @@ export class WebsiteModalComponent implements OnInit{
 
     onSave(form: NgForm) {
         const newSocial = new SocialMedia(
-            form.value.link,
             form.value.title,
-            form.value.description
+            form.value.description,
+            form.value.link
         );
         this.socialMediaService.addSocialMedia(newSocial).subscribe(
             this.socialMediaService.socialUpdated.emit(newSocial)
         );
+        form.resetForm();
         this.displayed = 'none';
     }
 

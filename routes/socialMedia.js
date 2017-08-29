@@ -51,20 +51,20 @@ router.post('/', function (req, res, next) {
     User.findById(decoded.user._id, function (err, user) {
         if (err) {
             return res.status(500).json({
-                title: 'An error occurred',
+                title: 'Could not find the user',
                 error: {message: 'Could not find the user'}
             });
         }
         var social = new SocialMedia({
-            link: req.body.link,
             title: req.body.title,
             description: req.body.description,
+            link: req.body.link,
             user: user
         });
         social.save(function (err, result) {
             if (err) {
                 return res.status(500).json({
-                    title: 'An internal error occurred',
+                    title: 'Error occurred while trying to save',
                     error: {message: 'Error occurred while trying to save'}
                 });
             }

@@ -45,9 +45,9 @@ export class SocialMediaService {
                 let transformedMedias: SocialMedia[] = [];
                 for (let social of socialMedias) {
                     transformedMedias.push(new SocialMedia(
-                        social.link,
                         social.title,
                         social.description,
+                        social.link,
                         social._id,
                         social.user.userId
                     ))

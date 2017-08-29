@@ -12,7 +12,7 @@
                 <form #f="ngForm">
                     <div class="form-group">
                         <label for="title" class="form-control-label">Title:</label>
-                        <input type="text" class="form-control" id="title" name="title" ngModel required>
+                        <input type="text" class="form-control" id="title" name="title" maxlength="50" ngModel>
                     </div>
                     <div class="form-group">
                         <label for="description" class="form-control-label">Description:</label>
@@ -20,13 +20,13 @@
                     </div>
                     <div class="form-group">
                         <label for="link" class="form-control-label">Link:</label>
-                        <input type="url" class="form-control" id="link" name="link" ngModel required>
+                        <input type="url" class="form-control" id="link" name="link" ngModel>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" (click)="onClose()">Close</button>
-                <button type="submit" class="btn btn-primary" [disabled]="!f.valid" (click)="onSave(f)">Save</button>
+                <button type="submit" class="btn btn-primary" [disabled]="f.value.title == '' && f.value.description == '' && f.value.link == ''" (click)="onSave(f)">Save</button>
             </div>
         </div>
     </div>

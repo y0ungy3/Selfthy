@@ -2,7 +2,8 @@
     <div class="form-group">
         <label for="username">Username</label>
         <input class="form-control" type="text" id="username" name="username" required ngModel #username="ngModel"/>
-        <span *ngIf="username.touched && !username.valid" class="help-block error-message">Please enter your username</span>
+        <span *ngIf="username.touched && !username.valid"
+              class="help-block error-message">Please enter your username</span>
     </div>
     <div class="form-group">
         <label for="password">Password</label>
@@ -11,3 +12,4 @@
     <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Login</button>
     <button type="button" class="btn btn-primary" (click)="registerClicked()">Register</button>
 </form>
+
