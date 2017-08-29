@@ -21,19 +21,17 @@ export class EditProfileComponent implements CanDeactivateInterface {
     private allItems: Item[] = [];
     private allSocialMedias: SocialMedia[] = [];
     private user: User;
-    //changesSaved = false;
 
     constructor(private itemService: ItemService, private authService: AuthService,
                 private route: ActivatedRoute, private router: Router,
                 private websiteModalService: WebsiteModalService, private socialMediaService: SocialMediaService) {
     };
 
-    onSave(form: NgForm) {
-        this.user.description = form.value.description;
+    onSave(description: String) {
+        this.user.description = description;
         this.authService.updateUser(this.user)
             .subscribe(
                 (user: User) => {
-                    //this.changesSaved = true;
                     this.router.navigateByUrl('/' + this.user.username)
                 }
             );
@@ -96,14 +94,6 @@ export class EditProfileComponent implements CanDeactivateInterface {
     belongsToUser(user: User) {
         return localStorage.getItem('userId') == user.userId;
     }
-
-    /*canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
-        if (!this.changesSaved) {
-            return confirm("Do you want to stop editing and discard any changes you might have made?");
-        } else {
-            return true;
-        }
-    }*/
 
     onAddWebsite() {
         const social = new SocialMedia();

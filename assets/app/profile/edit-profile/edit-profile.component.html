@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!--<div class="container-fluid">
     <form (ngSubmit)="onSave(f)" #f="ngForm">
         <div class="btn-group">
             <button class="btn btn-secondary" type="submit">Save</button>
@@ -31,6 +31,53 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-lg-4 portfolio-item" *ngFor="let item of allItems">
+            <div>
+                <img class="img-fluid" [src]="item.picture" alt=""/>
+                <p>{{item?.description}}</p>
+            </div>
+            <button class="btn btn-danger" type="button" (click)="deletePost(item)">Delete</button>
+        </div>
+    </div>
+
+</div>-->
+
+<div class="btn-group">
+    <button class="btn btn-secondary" type="submit" (click)="onSave(description.value)">Save</button>
+</div>
+<div class="btn-group">
+    <button class="btn btn-secondary" type="button" (click)="onCancel()">Cancel</button>
+</div>
+
+<div class="rela-block profile-card">
+    <div class="rela-block">
+        <div class="rela-block user-name" id="user_name">{{user?.username}}</div>
+        <div class="description-container">
+            <label style="text-align: left" for="description">Description</label>
+            <textarea maxlength="1000" id="description" class="form-control" rows="3" #description name="description" [ngModel]="user?.description"></textarea>
+        </div>
+    </div>
+</div>
+
+<div class="rela-block content">
+
+    <h3 style="text-align: center">Personal Websites</h3>
+    <button class="btn btn-secondary" type="button" (click)="onAddWebsite()">Add Website</button>
+    <div class="row">
+        <div class="col-sm-6" *ngFor="let social of allSocialMedias">
+            <app-socialMedia [socialMedia]="social"></app-socialMedia>
+            <button type="button" class="btn btn-danger" (click)="onDeleteSocial(social)">Delete</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <h3 style="text-align: center">Uploaded</h3>
+        </div>
+    </div>
+
+    <!--<div class="rela-inline image"></div>-->
     <div class="row">
         <div class="col-lg-4 portfolio-item" *ngFor="let item of allItems">
             <div>

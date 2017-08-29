@@ -28,7 +28,6 @@ export class ProfileComponent implements OnInit {
         this.route.params.subscribe(
             (params: Params) => {
                 username = params['username'];
-                console.log(username);
                 this.getUser(username);
             }
         );

@@ -17,11 +17,5 @@ schema.pre('save', function(next){
     next();
 });
 
-schema.post('remove', function(item) {
-    User.findById(item.user, function(err, user) {
-        user.items.pull(item);
-        user.save();
-    });
-});
 
 module.exports = mongoose.model('Item', schema);

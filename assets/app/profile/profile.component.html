@@ -14,6 +14,7 @@
 <div class="rela-block content">
 
     <h3 style="text-align: center">Personal Websites</h3>
+    <p *ngIf="allSocialMedias.length == 0">No content</p>
     <div class="row">
         <div class="col-sm-6" *ngFor="let social of allSocialMedias">
             <app-socialMedia [socialMedia]="social"></app-socialMedia>
@@ -25,8 +26,7 @@
             <h3 style="text-align: center">Uploaded</h3>
         </div>
     </div>
-
-    <!--<div class="rela-inline image"></div>-->
+    <p *ngIf="allItems.length == 0">No content</p>
     <div class="row">
         <div class="col-lg-4 portfolio-item" *ngFor="let item of allItems">
             <div>
