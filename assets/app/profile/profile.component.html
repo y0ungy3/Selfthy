@@ -1,6 +1,6 @@
 <button class="btn btn-secondary" type="button" *ngIf="isUser" (click)="onEdit()">Edit Profile</button>
 <div class="rela-block profile-card">
-        <div class="rela-block profile-name-container">
+    <div class="rela-block profile-name-container">
         <div class="rela-block user-name" id="user_name">{{user?.username}}</div>
         <div class="rela-block user-desc" id="user_description">{{user?.description}}</div>
     </div>
@@ -21,19 +21,23 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-xl-12">
-            <h3 style="text-align: center">Uploaded</h3>
-        </div>
-    </div>
     <p *ngIf="allItems.length == 0">No content</p>
-    <div class="row">
-        <div class="col-lg-4 portfolio-item" *ngFor="let item of allItems">
-            <div>
-                <img class="img-fluid" [src]="item.picture" alt=""/>
-                <p>{{item?.description}}</p>
+    <div class="container gallery-container">
+        <h1>Uploaded Ads</h1>
+        <div class="tz-gallery">
+            <div class="row">
+                <div class="col-md-6 col-lg-4" *ngFor="let item of allItems">
+                    <div class="thumbnail">
+                        <a class="lightbox">
+                            <img class="img-fluid" [src]="item.picture">
+                        </a>
+                        <div class="caption">
+                            <h3>Thumbnail label</h3>
+                            <p>{{item.description}}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
 </div>

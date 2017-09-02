@@ -1,5 +1,14 @@
-<div><a [routerLink]="['/' + anItem.username]">
+<!--<div><a [routerLink]="['/' + anItem.username]">
     <img class="img-fluid" [src]="anItem.picture" alt=""/>
 </a>
     <p>{{anItem?.description}}</p>
+</div>-->
+<div class="thumbnail">
+    <a class="lightbox">
+        <img class="img-fluid" [src]="anItem.picture" alt="Park">
+    </a>
+    <div class="caption">
+        <h3>Thumbnail label</h3>
+        <p>{{anItem.description}}</p>
+    </div>
 </div>

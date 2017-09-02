@@ -1,44 +1,4 @@
-<div class="container-fluid">
-
-    <!--<div class="row">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </div>
-    </div>-->
-
-
-    <br/>
-    <br/>
+<div class="container gallery-container">
     <div class="row">
         <div class="col-xl-12">
             <h1 class="page-header">What's New
@@ -46,12 +6,19 @@
             </h1>
         </div>
     </div>
-
-
-    <div class="row">
-        <div class="col-lg-4 portfolio-item" *ngFor="let item of allItems">
-            <app-item [anItem]="item"></app-item>
+    <div class="tz-gallery">
+        <div class="row">
+            <div class="col-md-6 col-lg-4" *ngFor="let item of allItems">
+                <div class="thumbnail">
+                    <a class="lightbox" [routerLink]="['/' + item.username]">
+                        <img class="img-fluid" [src]="item.picture" alt="Park">
+                    </a>
+                    <div class="caption">
+                        <h3>Thumbnail label</h3>
+                        <p>{{item.description}}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
 </div>
