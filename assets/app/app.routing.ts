@@ -8,6 +8,7 @@ import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {EditProfileComponent} from "./profile/edit-profile/edit-profile.component";
 import {AuthGuardService} from "./services/auth-guard.service";
 import {CanDeactivateGuard} from "./services/can-deactivate-guard.service";
+import {DeleteAccountComponent} from "./delete-account/delete-account.component";
 
 const APP_ROUTES: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -16,6 +17,7 @@ const APP_ROUTES: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'registration', component: RegistrationComponentt},
     {path: 'not-found', component: PageNotFoundComponent},
+    {path: 'delete-account', canActivate: [AuthGuardService], component: DeleteAccountComponent},
     {path: 'edit/:username', camActivate: [AuthGuardService], component: EditProfileComponent},
     {path: ':username', component: ProfileComponent},
     {path: '**', redirectTo: '/not-found'}

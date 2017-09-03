@@ -34,7 +34,6 @@
                                 <img class="img-fluid" [src]="item.picture">
                             </a>
                             <div class="caption">
-                                <h3>Thumbnail label</h3>
                                 <p>{{item.description}}</p>
                             </div>
                             <button class="btn btn-danger" type="button" (click)="deletePost(item)">Delete</button>
@@ -43,5 +42,8 @@
                 </div>
             </div>
         </div>
+        <button class="btn btn-danger" type="button" (click)="onDeleteAccount()">Delete Account</button>
+        <br/>
+        <br/>
     </div>
 </div>

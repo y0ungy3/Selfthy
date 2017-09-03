@@ -111,4 +111,8 @@ export class EditProfileComponent implements CanDeactivateInterface {
             );
     }
 
+    onDeleteAccount() {
+        this.router.navigateByUrl('/delete-account');
+    }
+
 }

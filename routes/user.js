@@ -4,6 +4,8 @@ var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 
 var User = require('../models/user');
+var Item = require('../models/item');
+var SocialMedia = require('../models/socialMedia');
 
 // user registration
 router.post('/', function (req, res, next) {
@@ -59,7 +61,7 @@ router.post('/login', function (req, res, next) {
 
 // get a user
 router.get('/:username', function (req, res, next) {
-    User.find({username: req.params.username}, function (err, user) {
+    User.findOne({username: req.params.username}, function (err, user) {
         if (err) {
             return res.status(500).json({
                 title: 'An error occurred',
@@ -150,6 +152,58 @@ router.patch('/:id', function (req, res, next) {
             }
             res.status(200).json({
                 message: 'Updated user successfully',
+                obj: result
+            });
+        })
+    })
+});
+
+router.delete('/:username', function (req, res, next) {
+    var decoded = jwt.decode(req.query.token);
+    User.findOne({username: req.params.username}, function (err, user) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occurred, could not find the user to delete',
+                error: {message: 'Could not find the user to delete'}
+            });
+        }
+        if (!user) {
+            return res.status(500).json({
+                title: 'The user being deleted cannot be found',
+                error: {message: 'The user being deleted cannot be found'}
+            });
+        }
+        if (user._id != decoded.user._id) {
+            return res.status(401).json({
+                title: 'Not authenticated',
+                error: {message: 'User do not match'}
+            });
+        }
+        user.remove(function (err, result) {
+            if (err) {
+                return res.status(500).json({
+                    title: 'An error occurred',
+                    error: {message: 'Error while trying to remove the user'}
+                });
+            }
+            Item.remove({'user': decoded.user._id}, function(err, result) {
+                if (err) {
+                    return res.status(500).json({
+                        title: 'An error occurred',
+                        error: {message: 'Error while trying to remove items for the user'}
+                    });
+                }
+            });
+            SocialMedia.remove({'user': decoded.user._id}, function(err, result) {
+                if (err) {
+                    return res.status(500).json({
+                        title: 'An error occurred',
+                        error: {message: 'Error while trying to remove websites for the user'}
+                    });
+                }
+            });
+            res.status(200).json({
+                message: 'Deleted User Account Successfully',
                 obj: result
             });
         })

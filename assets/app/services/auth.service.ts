@@ -56,11 +56,11 @@ export class AuthService {
             .map((response: Response) => {
                 const user = response.json().obj;
                 const transformedUser = new User(
-                    user[0].username,
+                    user.username,
                     null,
-                    user[0].description,
-                    user[0].views,
-                    user[0]._id
+                    user.description,
+                    user.views,
+                    user._id
                 );
                 return transformedUser;
             })
@@ -99,5 +99,15 @@ export class AuthService {
 
     getUsername() {
         return localStorage.getItem('username');
+    }
+
+    deleteAccount() {
+        const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
+        return this.http.delete('http://localhost:3000/user/' + this.getUsername() + token)
+            .map((response: Response) => response.json())
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
 }
