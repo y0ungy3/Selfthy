@@ -25,6 +25,7 @@ import {SocialMediaService} from "./services/social-media.service";
 import {WebsiteModalComponent} from "./website-modal/website-modal.component";
 import {WebsiteModalService} from "./services/website-modal.service";
 import {CharacterCount} from "./pipes/characterCount.pipe";
+import {FooterComponent} from "./footer/footer.component";
 
 @NgModule({
     declarations: [
@@ -41,7 +42,8 @@ import {CharacterCount} from "./pipes/characterCount.pipe";
         EditProfileComponent,
         SocialMediaComponent,
         WebsiteModalComponent,
-        CharacterCount
+        CharacterCount,
+        FooterComponent
     ],
     imports: [BrowserModule, HttpModule, routing, FormsModule],
     bootstrap: [AppComponent],
