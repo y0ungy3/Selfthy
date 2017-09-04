@@ -46,6 +46,32 @@ router.get('/:userId', function(req, res, next) {
     })
 });
 
+
+// return all the times that contain that tag
+router.get('/search/:tag', function(req, res, next) {
+    Item.find({tags: req.params.tag}, null, {sort: {createdAt: -1}}).populate('user', 'username')
+        .exec(function (err, items)  {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occurred',
+                error: {message: 'Could not get posts from a user'}
+            });
+        }
+        // if no items found
+        if (!items) {
+            return res.status(500).json({
+                title: 'No posts found for this user',
+                error: {message: 'No posts found for this user'}
+            });
+        }
+        res.status('200').json({
+            message: 'Get posts for user successfully',
+            obj: items
+        });
+    })
+});
+
+
 // all routers below this one will have to go through this one
 // first before reaching other router
 router.use('/', function (req, res, next) {
@@ -69,19 +95,20 @@ router.post('/', function (req, res, next) {
     User.findById(decoded.user._id, function (err, user) {
         if (err) {
             return res.status(500).json({
-                title: 'An error occurred',
+                title: 'An error occurred, cannot find the user',
                 error: err
             });
         }
         var item = new Item({
             picture: req.body.picture,
             description: req.body.description,
-            user: user
+            user: user,
+            tags: req.body.tags
         });
         item.save(function (err, result) {
             if (err) {
                 return res.status(500).json({
-                    title: 'An internal error occurred',
+                    title: 'Error occurred while saving item',
                     error: err
                 });
             }

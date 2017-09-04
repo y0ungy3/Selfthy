@@ -17,10 +17,15 @@ export class UploadComponent {
     private showAlert: boolean = false;
     private showBadAlert = false;
     public characterLeft: String = '';
+    private tags = [];
 
     onPost(form: NgForm) {
         if(this.authService.isLoggedIn()) {
-            const item = {picture: this.img, description: form.value.description};
+            let formatedTags = [];
+            for(let i=0; i < this.tags.length; i++) {
+                formatedTags.push(this.tags[i].value.toLowerCase());
+            }
+            const item = {picture: this.img, description: form.value.description, tags: formatedTags};
             this.itemService.addItem(item).subscribe(
                 data => {
                     this.img = null;

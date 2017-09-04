@@ -4,6 +4,7 @@ export class Item {
         public description: String,
         public createdAt: Date,
         public itemID?: String,
-        public username?: String) {
+        public username?: String,
+        public tags?: String[]) {
     };
 }

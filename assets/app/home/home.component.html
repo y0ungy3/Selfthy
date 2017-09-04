@@ -1,24 +1,36 @@
 <div class="container gallery-container">
-    <div class="row">
-        <div class="col-xl-12">
-            <h1 class="page-header">What's New
-                <small>See what everyone is talking about</small>
-            </h1>
-        </div>
-    </div>
     <div class="tz-gallery">
-        <div class="row">
-            <div class="col-md-6 col-lg-4" *ngFor="let item of allItems">
-                <div class="thumbnail">
-                    <a class="lightbox" [routerLink]="['/' + item.username]">
-                        <img class="img-fluid" [src]="item.picture" alt="Park">
-                    </a>
-                    <div class="caption">
-                        <p>{{item.description}}</p>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Enter a tag to search..." [(ngModel)]="searchValue" (change)="onSearchValueChange()">
+            <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button" (click)="search()">Search!</button>
+      </span>
+        </div>
+
+        <div *ngIf="!noResult">
+            <div class="row">
+                <div class="col-xl-12">
+                    <h1 class="page-header">What's New
+                        <small>See what everyone is talking about</small>
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4" *ngFor="let item of allItems">
+                    <div class="thumbnail">
+                        <a class="lightbox" [routerLink]="['/' + item.username]">
+                            <img class="img-fluid" [src]="item.picture" alt="Park">
+                        </a>
+                        <div class="caption">
+                            <p>{{item.description}}</p>
+                            <p>{{item.tags}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <h3 *ngIf="noResult">No results found</h3>
     </div>
 </div>
 <div class="container-fluid">

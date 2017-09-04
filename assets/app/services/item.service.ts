@@ -17,18 +17,7 @@ export class ItemService {
         const headers = new Headers({'Content-Type': 'application/json'});
         const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
         return this.http.post('http://localhost:3000/item' + token, body, {headers: headers})
-            .map((response: Response) => {
-                const result = response.json();
-                const item = new Item(
-                    result.obj.picture,
-                    result.obj.description,
-                    result.obj.createdAt,
-                    result.obj._id,
-                    result.obj.user.username
-                );
-                this.allItems.push(item);
-                return item;
-            })
+            .map((response: Response) => response.json())
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());
                 return Observable.throw(error.json());
@@ -46,7 +35,8 @@ export class ItemService {
                         item.description,
                         item.createdAt,
                         item._id,
-                        item.user.username
+                        item.user.username,
+                        item.tags
                     ))
                 }
                 this.allItems = transformedItems;
@@ -70,7 +60,8 @@ export class ItemService {
                         item.description,
                         item.createdAt,
                         item._id,
-                        item.user.username
+                        item.user.username,
+                        item.tags
                     ))
                 }
                 return transformedItems;
@@ -87,6 +78,29 @@ export class ItemService {
             .map((response: Response) => response.json())
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
+    }
+
+    findItems(tag: String) {
+        return this.http.get('http://localhost:3000/item/search/' + tag)
+            .map((response: Response) => {
+                const items = response.json().obj;
+                let transformedItems: Item[] = [];
+                for (let item of items) {
+                    transformedItems.push(new Item(
+                        item.picture,
+                        item.description,
+                        item.createdAt,
+                        item._id,
+                        item.user.username,
+                        item.tags
+                    ))
+                }
+                console.log(transformedItems);
+                return transformedItems;
+            })
+            .catch((error: Response) => {
                 return Observable.throw(error.json());
             });
     }

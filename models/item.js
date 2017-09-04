@@ -5,7 +5,8 @@ var schema = new Schema({
     picture: {type: Schema.Types.Mixed, required: true},
     description: {type: String},
     createdAt: {type: Date, default: Date.now},
-    user: {type: Schema.Types.ObjectId, ref: 'User'}
+    user: {type: Schema.Types.ObjectId, ref: 'User'},
+    tags: [{type: String}]
 });
 
 // Sets the createdAt parameter equal to the current time

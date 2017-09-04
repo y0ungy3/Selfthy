@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { TagInputModule } from 'ngx-chips';
 import { AppComponent } from "./app.component";
 import {HttpModule} from "@angular/http";
 import {routing} from "./app.routing";
@@ -27,6 +27,7 @@ import {WebsiteModalService} from "./services/website-modal.service";
 import {CharacterCount} from "./pipes/characterCount.pipe";
 import {FooterComponent} from "./footer/footer.component";
 import {DeleteAccountComponent} from "./delete-account/delete-account.component";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [
@@ -47,7 +48,7 @@ import {DeleteAccountComponent} from "./delete-account/delete-account.component"
         FooterComponent,
         DeleteAccountComponent
     ],
-    imports: [BrowserModule, HttpModule, routing, FormsModule],
+    imports: [BrowserModule, HttpModule, routing, FormsModule, TagInputModule, BrowserAnimationsModule],
     bootstrap: [AppComponent],
     providers: [ItemService, ErrorService, AuthGuardService, AuthService, CanDeactivateGuard, SocialMediaService, WebsiteModalService]
 })
