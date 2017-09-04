@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, HostListener, OnInit} from "@angular/core";
 import {ItemService} from "../services/item.service";
 import {Item} from "../models/Item";
 @Component({
@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
     allItems: Item[] = [];
     private noResult = false;
     private searchValue = '';
+    private page = 0;
 
     constructor(private itemService: ItemService) {
     };
@@ -50,6 +51,15 @@ export class HomeComponent implements OnInit {
                     (items: Item[]) => {
                         this.allItems = items;
                     });
+        }
+    }
+
+    @HostListener('window:scroll', ['$event']) onScrollEvent($event){
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            console.log("On Scroll Down");
+            this.page = this.page + 1;
+            console.log(this.page);
+            //Write logic here for loading new content.
         }
     }
 }
