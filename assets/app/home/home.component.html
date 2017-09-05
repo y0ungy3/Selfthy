@@ -1,7 +1,7 @@
 <div class="container gallery-container">
     <div class="tz-gallery">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Enter a tag to search..." [(ngModel)]="searchValue" (change)="onSearchValueChange()">
+            <input  (keyup.enter)="search()" type="text" class="form-control" placeholder="Enter a tag to search..." [(ngModel)]="searchValue" (change)="onSearchValueChange()">
             <span class="input-group-btn">
         <button class="btn btn-secondary" type="button" (click)="search()">Search!</button>
       </span>

@@ -33,11 +33,11 @@ export class HomeComponent implements OnInit {
         this.noResult = false;
         this.itemService.findItems(this.searchValue)
             .subscribe(
-                (result) => {
-                    if (result.length == 0)
+                (items: Item[]) => {
+                    if (items.length == 0)
                         this.noResult = true;
                     else
-                        this.allItems = result;
+                        this.allItems = items;
 
                 },
                 (error) => {
@@ -50,10 +50,10 @@ export class HomeComponent implements OnInit {
     onSearchValueChange() {
         if (this.searchValue == '' || this.searchValue == null) {
             this.noResult = false;
-            this.itemService.getAllItems()
+            this.itemService.getItemsPage(0)
                 .subscribe(
                     (items: Item[]) => {
-                        this.allItems = items;
+                        this.allItems = this.allItems.concat(items);
                     });
         }
     }
@@ -62,15 +62,14 @@ export class HomeComponent implements OnInit {
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
             this.itemsToSkip = this.itemsToSkip + 9;
             console.log(this.itemsToSkip);
-            //Write logic here for loading new content.
 
             this.itemService.getItemsPage(this.itemsToSkip)
                 .subscribe(
-                    (result) => {
-                        if(result.length <= 0) {
+                    (items: Item[]) => {
+                        if(items.length <= 0) {
                             this.itemsToSkip = this.itemsToSkip - 9;
                         } else {
-                            this.allItems = this.allItems.concat(result);
+                            this.allItems = this.allItems.concat(items);
                         }
                     },
                     (error) => {
