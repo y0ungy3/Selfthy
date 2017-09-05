@@ -5,15 +5,17 @@ var jwt = require('jsonwebtoken');
 var Item = require('../models/item');
 var User = require('../models/user');
 
-// getting all the items
-router.get('/', function(req, res, next) {
-    Item.find({}, null, {sort: {createdAt: -1}})
+// get a certain amount of items
+router.get('/page', function (req, res, next) {
+    const itemPerPage = 9;
+    const itemToSkip = parseInt(req.query.number);
+    Item.find({}, null, {skip: itemToSkip, limit: itemPerPage, sort: {createdAt: -1}})
         .populate('user', 'username')
         .exec(function (err, items) {
             if (err) {
                 return res.status(500).json({
-                    title: 'An error occurred, could not get items from database',
-                    error: {message: 'Could not get items from database'}
+                    title: 'An error occurred',
+                    error: {message: 'Could not get posts from a user'}
                 });
             }
             res.status(200).json({
@@ -23,9 +25,10 @@ router.get('/', function(req, res, next) {
         });
 });
 
+
 // get posts from one particular user
-router.get('/:userId', function(req, res, next) {
-    Item.find({user: req.params.userId}, null, {sort: {createdAt: -1}}, function(err, items) {
+router.get('/:userId', function (req, res, next) {
+    Item.find({user: req.params.userId}, null, {sort: {createdAt: -1}}, function (err, items) {
         if (err) {
             return res.status(500).json({
                 title: 'An error occurred',
@@ -48,27 +51,27 @@ router.get('/:userId', function(req, res, next) {
 
 
 // return all the times that contain that tag
-router.get('/search/:tag', function(req, res, next) {
+router.get('/search/:tag', function (req, res, next) {
     Item.find({tags: req.params.tag}, null, {sort: {createdAt: -1}}).populate('user', 'username')
-        .exec(function (err, items)  {
-        if (err) {
-            return res.status(500).json({
-                title: 'An error occurred',
-                error: {message: 'Could not get posts from a user'}
+        .exec(function (err, items) {
+            if (err) {
+                return res.status(500).json({
+                    title: 'An error occurred',
+                    error: {message: 'Could not get posts from a user'}
+                });
+            }
+            // if no items found
+            if (!items) {
+                return res.status(500).json({
+                    title: 'No posts found for this user',
+                    error: {message: 'No posts found for this user'}
+                });
+            }
+            res.status('200').json({
+                message: 'Get posts for user successfully',
+                obj: items
             });
-        }
-        // if no items found
-        if (!items) {
-            return res.status(500).json({
-                title: 'No posts found for this user',
-                error: {message: 'No posts found for this user'}
-            });
-        }
-        res.status('200').json({
-            message: 'Get posts for user successfully',
-            obj: items
-        });
-    })
+        })
 });
 
 

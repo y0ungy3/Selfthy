@@ -11,17 +11,21 @@ export class HomeComponent implements OnInit {
     allItems: Item[] = [];
     private noResult = false;
     private searchValue = '';
-    private page = 0;
+    private itemsToSkip = 0;
 
     constructor(private itemService: ItemService) {
     };
 
     ngOnInit() {
-        this.itemService.getAllItems()
+        this.itemService.getItemsPage(0)
             .subscribe(
-                (items: Item[]) => {
-                    this.allItems = items;
-                });
+                (result) => {
+                    this.allItems = this.allItems.concat(result);
+                },
+                (error) => {
+                    console.log("error getting items page");
+                }
+            );
     }
 
     search() {
@@ -56,10 +60,23 @@ export class HomeComponent implements OnInit {
 
     @HostListener('window:scroll', ['$event']) onScrollEvent($event){
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-            console.log("On Scroll Down");
-            this.page = this.page + 1;
-            console.log(this.page);
+            this.itemsToSkip = this.itemsToSkip + 9;
+            console.log(this.itemsToSkip);
             //Write logic here for loading new content.
+
+            this.itemService.getItemsPage(this.itemsToSkip)
+                .subscribe(
+                    (result) => {
+                        if(result.length <= 0) {
+                            this.itemsToSkip = this.itemsToSkip - 9;
+                        } else {
+                            this.allItems = this.allItems.concat(result);
+                        }
+                    },
+                    (error) => {
+                        console.log("error getting items page");
+                    }
+                );
         }
     }
 }

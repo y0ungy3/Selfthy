@@ -32,6 +32,7 @@ export class UploadComponent {
                     this.showAlert = true;
                     this.characterLeft = '';
                     form.resetForm();
+                    this.tags = [];
                 },
                 error => {
                     this.showBadAlert = true;

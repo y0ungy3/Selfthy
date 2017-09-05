@@ -24,8 +24,9 @@ export class ItemService {
             });
     }
 
-    getAllItems() {
-        return this.http.get('http://localhost:3000/item')
+
+    getItemsPage(page: String) {
+        return this.http.get('http://localhost:3000/item/page?number=' + page)
             .map((response: Response) => {
                 const items = response.json().obj;
                 let transformedItems: Item[] = [];
@@ -39,7 +40,6 @@ export class ItemService {
                         item.tags
                     ))
                 }
-                this.allItems = transformedItems;
                 return transformedItems;
             })
             .catch((error: Response) => {

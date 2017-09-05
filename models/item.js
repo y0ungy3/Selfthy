@@ -9,14 +9,4 @@ var schema = new Schema({
     tags: [{type: String}]
 });
 
-// Sets the createdAt parameter equal to the current time
-schema.pre('save', function(next){
-    var now = new Date();
-    if (!this.createdAt) {
-        this.createdAt = now;
-    }
-    next();
-});
-
-
 module.exports = mongoose.model('Item', schema);

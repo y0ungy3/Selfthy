@@ -55,3 +55,7 @@
 .baguetteBox-button {
     background-color: transparent !important;
 }
+
+.img-fluid {
+    max-height: 500px;
+}

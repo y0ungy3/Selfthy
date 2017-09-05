@@ -7,7 +7,8 @@ var schema = new Schema({
     username: {type: String, required: true, unique: true},
     password: {type: String, required: true},
     views: {type: Number},
-    description: {type: String, maxLength: 400}
+    description: {type: String, maxLength: 400},
+    createdAt: {type: Date, default: Date.now}
 });
 
 schema.pre('save', function(next){
@@ -16,6 +17,7 @@ schema.pre('save', function(next){
     }
     next();
 });
+
 
 schema.plugin(mongooseUniqueValidator);
 
