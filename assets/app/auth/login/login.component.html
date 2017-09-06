@@ -1,4 +1,9 @@
 <div class="container">
+    <div *ngIf="showBadAlert" class="alert alert-danger" role="alert">
+        <strong>Login Failed!</strong> Invalid username or password
+    </div>
+    <h3>Login</h3>
+    <p>Login to your account to start posting ads!</p>
     <form (ngSubmit)="onLogin(f)" #f="ngForm">
         <div class="form-group">
             <label for="username">Username</label>
@@ -11,8 +16,11 @@
             <input class="form-control" type="password" id="password" name="password" required ngModel/>
         </div>
         <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Login</button>
-        <button type="button" class="btn btn-primary" (click)="registerClicked()">Register</button>
     </form>
+    <br/>
+    <div class="form-group">
+        <p>Don't have an account?<a [routerLink]="['/registration']"> Register</a> for free!</p>
+    </div>
 </div>
 
 

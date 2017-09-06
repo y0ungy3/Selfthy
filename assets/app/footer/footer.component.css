@@ -7,7 +7,6 @@
 }
 
 #myFooter .footer-copyright{
-   /* margin-bottom: 35px;*/
     text-align: center;
     color: #777;
 }
@@ -19,7 +18,7 @@
 }
 
 #myFooter a{
-    color: #777;
+    color: #777; /*color for word links*/
     font-size: 18px;
 }
 
@@ -33,7 +32,7 @@
     text-align: center;
     padding-top: 25px;
     padding-bottom: 25px;
-    background-color: #2A2B30;
+    background-color: #ffffff; /*background color for footer*/
 }
 
 #myFooter .fa{

@@ -5,3 +5,7 @@ input.ng-invalid.ng-touched {
 .error-message {
     color: red;
 }
+
+.container {
+    padding-top: 50px;
+}

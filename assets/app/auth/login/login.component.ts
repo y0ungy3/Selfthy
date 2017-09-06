@@ -9,6 +9,7 @@ import {User} from "../../models/User";
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+    private showBadAlert = false;
 
     constructor(private authService: AuthService, private router: Router){};
 
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
     }
 
     onLogin(form: NgForm) {
+        this.showBadAlert = false;
         const user = new User(form.value.username, form.value.password);
         this.authService.login(user)
             .subscribe(
@@ -27,11 +29,10 @@ export class LoginComponent implements OnInit {
                     localStorage.setItem('userId', data.userId);
                     localStorage.setItem('username', data.username);
                     this.router.navigateByUrl('/home');
+                },
+                (error) => {
+                    this.showBadAlert = true;
                 }
             )
-    }
-
-    registerClicked() {
-        this.router.navigateByUrl('/registration');
     }
 }

@@ -17,7 +17,6 @@ export class AuthService {
         return this.http.post('http://localhost:3000/user', body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => {
-                this.errorService.handleError(error.json());
                 return Observable.throw(error.json());
             });
     }
@@ -28,7 +27,6 @@ export class AuthService {
         return this.http.post('http://localhost:3000/user/login', body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => {
-                this.errorService.handleError(error.json());
                 return Observable.throw(error.json());
             });
     }

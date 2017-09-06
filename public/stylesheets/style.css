@@ -1,12 +1,14 @@
 body {
   font: 14px 'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: #2A2B30;
+  background: #ffffff;
 }
-/*#df2d70*/
+/*#df2d70*
+2A2B30/
+ */
 a {
-  color: #00B7FF;
+  color: #03a9f4;
 }
 
-h1 {
-  color: #DF2D70;
+h1, h2, h3, h4 {
+  color: #03a9f4;
 }

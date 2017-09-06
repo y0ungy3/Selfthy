@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 })
 export class RegistrationComponentt implements OnInit {
 
+    private showBadAlert = false;
     constructor(private authService: AuthService, private router: Router) {
     };
 
@@ -20,6 +21,7 @@ export class RegistrationComponentt implements OnInit {
     }
 
     onRegister(form: NgForm) {
+        this.showBadAlert = false;
         if (form.value.password == form.value.retypePassword) {
             const user = new User(
                 form.value.username,
@@ -30,7 +32,9 @@ export class RegistrationComponentt implements OnInit {
                     data => {
                         this.router.navigateByUrl('/login')
                     },
-                    error => console.log(error)
+                    (error) => {
+                        this.showBadAlert = true;
+                    }
                 );
         }
     }
