@@ -1,37 +1,27 @@
-<div class="container gallery-container">
-    <div class="tz-gallery">
+<div class="container">
+    <section class="page page--static">
         <div class="input-group">
             <input  (keyup.enter)="search()" type="text" class="form-control" placeholder="Enter a tag to search..." [(ngModel)]="searchValue" (change)="onSearchValueChange()">
             <span class="input-group-btn">
         <button class="btn btn-secondary" type="button" (click)="search()">Search!</button>
       </span>
         </div>
-
         <div *ngIf="!noResult">
-            <div class="row">
-                <div class="col-xl-12">
-                    <h1 class="page-header">What's New
-                        <small>See what everyone is talking about</small>
-                    </h1>
-                </div>
+            <div class="page__title">
+                <h2 class="page__title-main">Polaroid Stack to Grid Intro Animation</h2>
+                <p class="page__title-sub">Recreating the effect seen on the website</p>
             </div>
-            <div class="row">
-                <div class="col-md-6 col-lg-4" *ngFor="let item of allItems">
-                    <div class="thumbnail">
-                        <a class="lightbox" [routerLink]="['/' + item.username]">
-                            <img class="img-fluid" [src]="item.picture" alt="Park">
-                        </a>
-                        <div class="caption">
-                            <p>{{item.description}}</p>
-                            <p>{{item.tags}}</p>
-                        </div>
-                    </div>
+            <div class="card-columns">
+                <div class="card card__one" *ngFor="let item of allItems">
+                    <a class="grid__link" [routerLink]="['/' + item.username]">
+                        <img class="grid__img" [src]="item.picture" alt="Some image" />
+                    </a>
+                    <h3 class="grid__item-title">{{item.description}}</h3>
                 </div>
             </div>
         </div>
-
         <h3 *ngIf="noResult">No results found</h3>
-    </div>
+    </section>
 </div>
 <div class="container-fluid">
     <app-footer></app-footer>

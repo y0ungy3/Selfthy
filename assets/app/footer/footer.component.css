@@ -19,7 +19,7 @@
 }
 
 #myFooter a{
-    color: #282b2d;
+    color: #777;
     font-size: 18px;
 }
 
@@ -33,7 +33,7 @@
     text-align: center;
     padding-top: 25px;
     padding-bottom: 25px;
-    background-color: #eee;
+    background-color: #2A2B30;
 }
 
 #myFooter .fa{
@@ -41,7 +41,7 @@
     margin-right: 15px;
     margin-left: 20px;
     background-color: white;
-    color: #d0d0d0;
+    color: #a5aeb5;
     border-radius: 51%;
     padding: 10px;
     height: 60px;

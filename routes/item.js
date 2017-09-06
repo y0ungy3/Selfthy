@@ -7,7 +7,7 @@ var User = require('../models/user');
 
 // get a certain amount of items
 router.get('/page', function (req, res, next) {
-    const itemPerPage = 9;
+    const itemPerPage = 10;
     const itemToSkip = parseInt(req.query.number);
     Item.find({}, null, {skip: itemToSkip, limit: itemPerPage, sort: {createdAt: -1}})
         .populate('user', 'username')

@@ -1,9 +1,12 @@
 body {
-  padding-top: 100px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: #f7f7f7;
+  font: 14px 'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #2A2B30;
 }
-
+/*#df2d70*/
 a {
   color: #00B7FF;
+}
+
+h1 {
+  color: #DF2D70;
 }

@@ -53,6 +53,8 @@ export class HomeComponent implements OnInit {
             this.itemService.getItemsPage(0)
                 .subscribe(
                     (items: Item[]) => {
+                        this.allItems = [];
+                        this.itemsToSkip = 0;
                         this.allItems = this.allItems.concat(items);
                     });
         }
@@ -60,14 +62,14 @@ export class HomeComponent implements OnInit {
 
     @HostListener('window:scroll', ['$event']) onScrollEvent($event){
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-            this.itemsToSkip = this.itemsToSkip + 9;
+            this.itemsToSkip = this.itemsToSkip + 10;
             console.log(this.itemsToSkip);
 
             this.itemService.getItemsPage(this.itemsToSkip)
                 .subscribe(
                     (items: Item[]) => {
                         if(items.length <= 0) {
-                            this.itemsToSkip = this.itemsToSkip - 9;
+                            this.itemsToSkip = this.itemsToSkip - 10;
                         } else {
                             this.allItems = this.allItems.concat(items);
                         }

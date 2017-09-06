@@ -1,10 +1,10 @@
-.navbar {
+/*.navbar {
     -webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;
     box-shadow: 0 12px 6px -6px #999;
 
-    /* the rest of your styling */
-}
+    !* the rest of your styling *!
+}*/
 
 .logo {
     font-family: "Yellowtail";
@@ -30,4 +30,8 @@
 }
 .floated.right {
     float: right;
+}
+
+.navbar {
+    color: #96acb6
 }
