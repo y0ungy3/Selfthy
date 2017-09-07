@@ -12,3 +12,7 @@ a {
 h1, h2, h3, h4 {
   color: #03a9f4;
 }
+
+.container {
+  padding-top: 10px;
+}

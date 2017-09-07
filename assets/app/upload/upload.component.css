@@ -1,4 +1,9 @@
 .img-fluid {
     max-width: 100%;
+    max-height: 500px;
     height: auto;
+}
+
+.container {
+    padding-top: 50px;
 }

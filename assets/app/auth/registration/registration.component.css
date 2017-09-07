@@ -10,6 +10,6 @@ input.ng-invalid.ng-touched {
     padding-top: 50px;
 }
 
-.help-block {
+.hint {
     color: #96acb6;
 }

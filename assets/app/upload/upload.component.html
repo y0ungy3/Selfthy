@@ -1,15 +1,21 @@
 <div class="container">
     <h1 style="text-align: center">Upload</h1>
-    <hr/>
+
+    <p style="text-align: center">Your goal is to get people to view your profile so they can see all your social medias or links that you want people to click on and visit!</p>
+    <p>Pick an interesting picture that represents who you are such as selfies, hobbies, personal websites, video game screenshots, your pets, etc...anything!</p>
+    <p>Write a cool description about your picture</p>
+    <p>Remember! Your goal is to promote and advertise yourself so others can view your profile and might visit your other social medias and websites</p>
+    <p>Some people might have the same interests, hobbies, or play the same games as you, so post something and let them know!</p>
     <div *ngIf="showAlert" class="alert alert-success" role="alert">
         <strong>Uploaded!</strong> You can view your ad on the home page.
     </div>
     <div *ngIf="showBadAlert" class="alert alert-danger" role="alert">
-        <strong>Oops!</strong> Failed to upload the image. Maximum image size is 10MB
+        <strong>Oops!</strong> Failed to upload the image. (Maximum image size is 10MB)
     </div>
+
     <form (ngSubmit)="onPost(f)" #f="ngForm">
         <div class="form-group">
-            <p>Choose an image to advertise yourself</p>
+            <p>Choose an image</p>
             <label class="btn btn-primary">Browse
                 <input type='file' accept=".jpg,.jpeg,.png" (change)="readImage($event)" style="display: none;" required>
             </label>
@@ -17,22 +23,29 @@
         </div>
         <div class="form-group">
             <div class="col-lg-4 portfolio-item">
+                <p *ngIf="img">Preview:</p>
                 <img class="img-fluid" [src]="img">
             </div>
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea type="text" class="form-control" id="description" rows="3" name="description"  maxlength="200" [(ngModel)]="characterLeft"></textarea>
-            <span class="help-block">Max Length: {{characterLeft | CharacterCount:200}}</span>
+            <textarea type="text" class="form-control" id="description" rows="4" name="description"
+                      maxlength="300" [(ngModel)]="characterLeft"
+                      placeholder="example: I just got a polar bear as a pet! Follow me on Instagram to see more of him! "
+            ></textarea>
+            <span class="help-block">Max Length: {{characterLeft | CharacterCount:300}}</span>
         </div>
         <div class="form-group">
+            <p>Enter relevant tags</p>
+            <p>(Tags are used so others can find this post, your post will not show up in search if no tags are entered)</p>
             <tag-input name="tags" [(ngModel)]='tags'></tag-input>
         </div>
         <div class="form-group">
+            <p>Remember to not post anything that you would not want anyone to see!</p>
             <button class="btn btn-primary" type="submit" [disabled]="!img">Post</button>
         </div>
     </form>
-
+    <br/>
 </div>
 
 

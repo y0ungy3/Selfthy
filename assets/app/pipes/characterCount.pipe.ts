@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export class CharacterCount implements PipeTransform {
     transform(text: string, args: number) {
-        let maxLength = args || 140;
+        let maxLength = args || 200;
         if(text) {
             let length = text.length;
             return (maxLength - length);

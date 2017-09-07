@@ -2,8 +2,10 @@
     <div *ngIf="showBadAlert" class="alert alert-danger" role="alert">
         <strong>Login Failed!</strong> Invalid username or password
     </div>
-    <h3>Login</h3>
-    <p>Login to your account to start posting ads!</p>
+    <div style="text-align: center">
+        <h3>Login</h3>
+        <p>Login to your account to start posting ads!</p>
+    </div>
     <form (ngSubmit)="onLogin(f)" #f="ngForm">
         <div class="form-group">
             <label for="username">Username</label>
