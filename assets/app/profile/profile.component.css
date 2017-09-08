@@ -1,12 +1,34 @@
-.container {
-    padding-top: 50px;
-}
-
 .hint {
     font-size: 12px;
     color: #96acb6;
 }
 
+h4 {
+    color: #58595a;
+    text-align: center;
+}
+
+.container {
+    padding-top: 50px;
+}
+
+.description {
+    text-align: left;
+    padding: 15px 15px 15px 15px;
+    letter-spacing: 1px;
+    font-size: 14px;
+    color: #637983;
+}
+
+.tags {
+    text-align: left;
+    color: #96acb6;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
+/*--------------Username and stats----------------------*/
 .rela-block {
     display: block;
     position: relative;
@@ -36,29 +58,27 @@
     background-color: #fff;
     box-shadow: 0 2px 6px -2px rgba(0,0,0,0.26);
 }
-.profile-pic {
-    object-fit: cover;
-    width:314px;
-    height:238px;
-    border-radius:40%;
-}
+
 .profile-name-container {
     margin: 0 auto 10px;
     padding: 10px;
     text-align: center;
 }
 .user-name {
-    font-family: "Montserrat";
     font-size: 24px;
     letter-spacing: 3px;
     font-weight: 400;
     line-height: 30px;
     margin-bottom: 12px;
     color: #03a9f4;
+    word-wrap: break-word;
 }
 .user-desc {
     letter-spacing: 1px;
     color: #999;
+    word-wrap: break-word;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 .profile-card-stats {
     height: 75px;
@@ -98,60 +118,97 @@
         margin: 50px auto 30px;
     }
 }
+/*--------------end of username and stats----------------------*/
 
 
-.gallery-container h1 {
-    text-align: center;
-    margin-top: 70px;
-    font-weight: bold;
-    color: #58595a;
+/*-------------------------Gallery style----------------------*/
+.card__one {
+    transition: transform .5s;
+}
+.card__one::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+    content: '';
+    opacity: 0;
+    z-index: -1;
+}
+.card__one:hover, .card__one:focus {
+    transform: scale3d(1.006, 1.006, 1);
+}
+.card__one:hover::after, .card__one:focus::after {
+    opacity: 1;
 }
 
-.gallery-container p.page-description {
-    text-align: center;
-    margin: 30px auto;
-    font-size: 18px;
-    color: #85878c;
+.grid__item {
+    display: block;
+    -webkit-flex: none;
+    flex: none;
+    width: 33.33%;
+    padding: 10px;
 }
 
-/* Styles for the gallery */
-
-.tz-gallery {
-    padding: 40px;
+.js .grid__item {
+    opacity: 0;
 }
 
-.tz-gallery .thumbnail {
-    padding: 0;
-    margin-bottom: 30px;
-    border: none;
+.grid__item--hidden {
+    opacity: 0;
 }
 
-.tz-gallery img {
-    border-radius: 2px;
+.grid__link {
+    display: block;
+    padding: 13px 13px 0 13px;
+    background: #fff;
 }
 
-.tz-gallery .caption{
-    padding: 26px 30px;
-    text-align: center;
+.grid__img {
+    display: block;
+    width: 100%;
 }
 
-.tz-gallery .caption h3 {
-    font-size: 14px;
-    font-weight: bold;
-    margin-top: 0;
+/* Visibility/pointer events of items depending on state (loaded) */
+
+.js .grid,
+.js .device,
+.js .button--view {
+    opacity: 0;
 }
 
-.tz-gallery .caption p {
-    font-size: 12px;
-    color: #7b7d7d;
-    margin: 0;
+.view--loaded .grid,
+.view--loaded .device,
+.view--loaded .button--view {
+    opacity: 1;
 }
 
-.baguetteBox-button {
-    background-color: transparent !important;
+.view--loaded .button--view {
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
 }
 
-h4 {
-    color: #58595a;
-    text-align: center;
+.js .page--static {
+    pointer-events: none;
 }
+
+.view--grid .page--static {
+    pointer-events: auto;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 56em) {
+    .page__title-main {
+        font-size: 1.3em;
+    }
+    .page__title-sub {
+        margin-bottom: 1em;
+    }
+    .grid__item {
+        width: 50%;
+        max-width: none;
+    }
+}
+/*----------------------end of gallery style----------------------*/

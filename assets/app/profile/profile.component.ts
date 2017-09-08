@@ -93,4 +93,14 @@ export class ProfileComponent implements OnInit {
                 }
             );
     }
+
+    parseTags(array: []) {
+        let formattedTags = '';
+        let newTag = '';
+        for(let tag of array) {
+            newTag = "#" + tag + " ";
+            formattedTags = formattedTags + newTag;
+        }
+        return formattedTags;
+    }
 }

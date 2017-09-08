@@ -10,45 +10,42 @@
         </div>
         <div class="description-container">
             <label style="text-align: left" for="description">Description</label>
-            <textarea maxlength="800" id="description" class="form-control" rows="3" #description name="description"
+            <textarea maxlength="800" id="description" class="form-control" rows="7" #description name="description"
                       [ngModel]="user?.description"
-                        placeholder="talk about yourself..."
+                        placeholder="say something about yourself and what you do!"
             ></textarea>
         </div>
     </div>
 
     <div class="rela-block content">
-        <h4>Personal Websites</h4>
+        <h4>Personal Social Medias</h4>
+        <br/>
         <div style="text-align: center">
-            <button class="btn btn-secondary" type="button" (click)="onAddWebsite()">Add Website</button>
+            <button class="btn btn-secondary" type="button" (click)="onAddWebsite()">Add!</button>
         </div>
 
         <div class="row">
             <div class="col-sm-6" *ngFor="let social of allSocialMedias">
                 <app-socialMedia [socialMedia]="social"></app-socialMedia>
-                <button type="button" class="btn btn-danger" (click)="onDeleteSocial(social)">Delete</button>
+                <button type="button" class="btn btn-danger del-btn" (click)="onDeleteSocial(social)">Delete</button>
             </div>
         </div>
         <div class="container gallery-container">
             <h4>Manage Ads</h4>
-            <div class="tz-gallery">
+            <br/>
+            <div class="card-columns">
                 <p style="text-align: center" *ngIf="allItems.length == 0">Go to Upload to post your ads!</p>
-                <div class="row">
-                    <div class="col-md-6 col-lg-4" *ngFor="let item of allItems">
-                        <div class="thumbnail">
-                            <a class="lightbox">
-                                <img class="img-fluid" [src]="item.picture">
-                            </a>
-                            <div class="caption">
-                                <p>{{item.description}}</p>
-                            </div>
-                            <button class="btn btn-danger" type="button" (click)="deletePost(item)">Delete</button>
-                        </div>
-                    </div>
+                <div class="card card__one" *ngFor="let item of allItems">
+                    <a class="grid__link">
+                        <img class="grid__img" [src]="item.picture" alt="Some image" />
+                    </a>
+                    <p class="description">{{item.description}}</p>
+                    <p class="tags">{{parseTags(item.tags)}}</p>
+                    <button class="btn btn-danger del-btn" type="button" (click)="deletePost(item)">Delete</button>
                 </div>
             </div>
         </div>
-        <button class="btn btn-danger" type="button" (click)="onDeleteAccount()">Delete Account</button>
+        <button class="btn btn-danger btn-delete-account" type="button" (click)="onDeleteAccount()">Delete Account</button>
         <br/>
         <br/>
     </div>

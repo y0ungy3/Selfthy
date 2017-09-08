@@ -84,7 +84,7 @@ export class EditProfileComponent implements CanDeactivateInterface {
     onDeleteSocial(social: SocialMedia) {
         this.socialMediaService.deleteSocialMedia(social)
             .subscribe(
-                (social: SocialMedia) => {
+                (data: SocialMedia) => {
                     this.allSocialMedias.splice(this.allSocialMedias.indexOf(social), 1)
                 }
             );
@@ -113,6 +113,16 @@ export class EditProfileComponent implements CanDeactivateInterface {
 
     onDeleteAccount() {
         this.router.navigateByUrl('/delete-account');
+    }
+
+    parseTags(array: []) {
+        let formattedTags = '';
+        let newTag = '';
+        for(let tag of array) {
+            newTag = "#" + tag + " ";
+            formattedTags = formattedTags + newTag;
+        }
+        return formattedTags;
     }
 
 }

@@ -14,7 +14,7 @@
     </div>
 
     <div class="rela-block content">
-        <h4>Personal Websites</h4>
+        <h4>Personal Social Medias</h4>
         <p style="text-align: center" *ngIf="allSocialMedias.length == 0">No content</p>
         <div class="row">
             <div class="col-sm-6" *ngFor="let social of allSocialMedias">
@@ -25,19 +25,14 @@
         <p style="text-align: center" *ngIf="allItems.length == 0">No content</p>
         <div class="container gallery-container">
             <h4>Uploaded Ads</h4>
-            <div class="tz-gallery">
-                <div class="row">
-                    <div class="col-md-6 col-lg-4" *ngFor="let item of allItems">
-                        <div class="thumbnail">
-                            <a class="lightbox">
-                                <img class="img-fluid" [src]="item.picture">
-                            </a>
-                            <div class="caption">
-                                <h4>{{item.description}}</h4>
-                                <p>{{item.tags}}</p>
-                            </div>
-                        </div>
-                    </div>
+            <br/>
+            <div class="card-columns">
+                <div class="card card__one" *ngFor="let item of allItems">
+                    <a class="grid__link" [routerLink]="['/' + item.username]">
+                        <img class="grid__img" [src]="item.picture" alt="Some image" />
+                    </a>
+                    <p class="description">{{item.description}}</p>
+                    <p class="tags">{{parseTags(item.tags)}}</p>
                 </div>
             </div>
         </div>

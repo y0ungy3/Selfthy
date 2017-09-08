@@ -1,9 +1,9 @@
-
 import {Component, Input} from "@angular/core";
 import {SocialMedia} from "../../models/SocialMedia";
 @Component({
     selector: 'app-socialMedia',
     templateUrl: './social-media.component.html',
+    styleUrls: ['./social-media.component.css']
 })
 export class SocialMediaComponent {
     @Input() socialMedia: SocialMedia;

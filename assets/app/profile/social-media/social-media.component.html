@@ -1,11 +1,7 @@
-<div class="card">
-    <h3 class="card-header">{{socialMedia?.title}}</h3>
-    <div class="card-block">
-        <p class="card-text">{{socialMedia?.description}}</p>
-        <div class="card-block">
-            <a (click)="openUrl()" class="card-link">{{socialMedia.link}}</a>
-        </div>
+<div class="container">
+    <div class="card">
+        <p class="title">{{socialMedia?.title}}</p>
+        <p class="description">{{socialMedia?.description}}</p>
+        <p (click)="openUrl()" class="link">{{socialMedia?.link}}</p>
     </div>
 </div>
-
-
