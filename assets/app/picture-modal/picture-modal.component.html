@@ -1,0 +1,11 @@
+<div class="backdrop" [ngStyle]="{'display': displayed}"></div>
+<div class="modal" [ngStyle]="{'display': displayed}" role="dialog">
+    <div class="modal-dialog">
+        <button type="button" class="btn btn-secondary" (click)="onClose()">Close</button>
+        <div class="modal-content">
+            <div class="modal-body">
+               <img [src]="picture" alt="large picture" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>

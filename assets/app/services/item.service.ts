@@ -1,5 +1,5 @@
 import {Http, Headers, Response} from "@angular/http";
-import {Injectable} from "@angular/core";
+import {EventEmitter, Injectable} from "@angular/core";
 import 'rxjs/Rx';
 import {Observable} from "rxjs";
 
@@ -8,8 +8,16 @@ import {ErrorService} from "./error.service";
 
 @Injectable()
 export class ItemService {
+
+    pictureModal = new EventEmitter<Item>();
+
     constructor(private http: Http, private errorService: ErrorService) {
     };
+
+    callModal(item: Item) {
+        console.log('called?');
+        this.pictureModal.emit(item);
+    }
 
     // add an item to the database
     addItem(i: any) {

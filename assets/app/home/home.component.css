@@ -87,6 +87,7 @@
     display: block;
     padding: 13px 13px 0 13px;
     background: #fff;
+    cursor: pointer;
 }
 
 .grid__img {
@@ -145,6 +146,7 @@
     letter-spacing: 1px;
     font-size: 14px;
     color: #637983;
+    clear: both;
 }
 
 .tags {
@@ -152,4 +154,11 @@
     color: #96acb6;
     padding-right: 15px;
     padding-left: 15px;
+}
+
+.username {
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+    float: right;
 }

@@ -90,4 +90,9 @@ export class HomeComponent implements OnInit {
         }
         return formattedTags;
     }
+
+    viewPicture(item: Item) {
+        console.log("clicked");
+        this.itemService.callModal(item);
+    }
 }

@@ -31,6 +31,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AboutComponent} from "./footer-links/about/about.component";
 import {UserAgreementComponent} from "./footer-links/user-agreement/user-agreement.component";
 import {ContactComponent} from "./footer-links/contact/contact.component";
+import {PictureModalComponent} from "./picture-modal/picture-modal.component";
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import {ContactComponent} from "./footer-links/contact/contact.component";
         DeleteAccountComponent,
         AboutComponent,
         UserAgreementComponent,
-        ContactComponent
+        ContactComponent,
+        PictureModalComponent
     ],
     imports: [BrowserModule, HttpModule, routing, FormsModule, TagInputModule, BrowserAnimationsModule],
     bootstrap: [AppComponent],
