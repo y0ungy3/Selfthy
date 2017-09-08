@@ -1,3 +1,7 @@
+.container {
+    padding-top: 50px;
+}
+
 .rela-block {
     display: block;
     position: relative;
@@ -32,6 +36,7 @@
     font-weight: 400;
     line-height: 30px;
     margin-bottom: 12px;
+    color: #03a9f4;
 }
 .user-desc {
     letter-spacing: 1px;
@@ -54,14 +59,6 @@
     }
 }
 
-
-.gallery-container h1 {
-    text-align: center;
-    margin-top: 70px;
-    font-family: 'Droid Sans', sans-serif;
-    font-weight: bold;
-    color: #58595a;
-}
 
 .gallery-container p.page-description {
     text-align: center;
@@ -111,4 +108,9 @@
     margin-left: 20px;
     margin-right: 20px;
     padding-bottom: 20px;
+}
+
+h4 {
+    color: #58595a;
+    text-align: center;
 }

@@ -3,8 +3,6 @@
   src: url('https://fonts.googleapis.com/css?family=Montserrat:300,400&subset=vietnamese');
 }
 
-
-
 body {
   font-family: theFont, sans-serif;
   font-size: 13px;
@@ -26,6 +24,7 @@ h1 {
   font-size: 35px;
 }
 
+/*the height of the navbar*/
 .container {
   padding-top: 5px;
 }

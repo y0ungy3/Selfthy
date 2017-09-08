@@ -1,3 +1,12 @@
+.container {
+    padding-top: 50px;
+}
+
+.hint {
+    font-size: 12px;
+    color: #96acb6;
+}
+
 .rela-block {
     display: block;
     position: relative;
@@ -45,6 +54,7 @@
     font-weight: 400;
     line-height: 30px;
     margin-bottom: 12px;
+    color: #03a9f4;
 }
 .user-desc {
     letter-spacing: 1px;
@@ -93,7 +103,6 @@
 .gallery-container h1 {
     text-align: center;
     margin-top: 70px;
-    font-family: 'Droid Sans', sans-serif;
     font-weight: bold;
     color: #58595a;
 }
@@ -140,4 +149,9 @@
 
 .baguetteBox-button {
     background-color: transparent !important;
+}
+
+h4 {
+    color: #58595a;
+    text-align: center;
 }

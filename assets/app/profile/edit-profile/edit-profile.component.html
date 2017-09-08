@@ -10,14 +10,19 @@
         </div>
         <div class="description-container">
             <label style="text-align: left" for="description">Description</label>
-            <textarea maxlength="1000" id="description" class="form-control" rows="3" #description name="description"
-                      [ngModel]="user?.description"></textarea>
+            <textarea maxlength="800" id="description" class="form-control" rows="3" #description name="description"
+                      [ngModel]="user?.description"
+                        placeholder="talk about yourself..."
+            ></textarea>
         </div>
     </div>
 
     <div class="rela-block content">
-        <h3 style="text-align: center">Personal Websites</h3>
-        <button class="btn btn-secondary" type="button" (click)="onAddWebsite()">Add Website</button>
+        <h4>Personal Websites</h4>
+        <div style="text-align: center">
+            <button class="btn btn-secondary" type="button" (click)="onAddWebsite()">Add Website</button>
+        </div>
+
         <div class="row">
             <div class="col-sm-6" *ngFor="let social of allSocialMedias">
                 <app-socialMedia [socialMedia]="social"></app-socialMedia>
@@ -25,8 +30,9 @@
             </div>
         </div>
         <div class="container gallery-container">
-            <h1>Manage Ads</h1>
+            <h4>Manage Ads</h4>
             <div class="tz-gallery">
+                <p style="text-align: center" *ngIf="allItems.length == 0">Go to Upload to post your ads!</p>
                 <div class="row">
                     <div class="col-md-6 col-lg-4" *ngFor="let item of allItems">
                         <div class="thumbnail">

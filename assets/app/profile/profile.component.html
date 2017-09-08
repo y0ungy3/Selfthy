@@ -1,4 +1,5 @@
 <div class="container">
+    <p *ngIf="isUser" style="font-size: 12px" class="hint">Copy the URL in your browser and share it so people can view your profile!</p>
     <button class="btn btn-secondary" type="button" *ngIf="isUser" (click)="onEdit()">Edit Profile</button>
     <div class="rela-block profile-card">
         <div class="rela-block profile-name-container">
@@ -13,18 +14,17 @@
     </div>
 
     <div class="rela-block content">
-
-        <h3 style="text-align: center">Personal Websites</h3>
-        <p *ngIf="allSocialMedias.length == 0">No content</p>
+        <h4>Personal Websites</h4>
+        <p style="text-align: center" *ngIf="allSocialMedias.length == 0">No content</p>
         <div class="row">
             <div class="col-sm-6" *ngFor="let social of allSocialMedias">
                 <app-socialMedia [socialMedia]="social"></app-socialMedia>
             </div>
         </div>
 
-        <p *ngIf="allItems.length == 0">No content</p>
+        <p style="text-align: center" *ngIf="allItems.length == 0">No content</p>
         <div class="container gallery-container">
-            <h1>Uploaded Ads</h1>
+            <h4>Uploaded Ads</h4>
             <div class="tz-gallery">
                 <div class="row">
                     <div class="col-md-6 col-lg-4" *ngFor="let item of allItems">
