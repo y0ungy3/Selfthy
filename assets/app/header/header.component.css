@@ -20,17 +20,21 @@
 .floated {
     display: inline-block;
     position: relative;
-    margin: false;
-    top: ;
-    left: ;
-    right: ;
-    bottom: ;
+    top: auto ;
+    left: auto;
+    right: auto;
+    bottom: auto;
     float: left;
 }
 .floated.right {
     float: right;
 }
 
-.navbar {
-    color: #96acb6
+.fakeLink {
+    color: #03a9f4;
+    background-color: transparent;
+}
+
+.fakeLink:hover {
+    color: #17446E;
 }

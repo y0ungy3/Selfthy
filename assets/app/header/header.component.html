@@ -5,7 +5,7 @@
             <li routerLinkActive="active" class="nav-item"><a routerLink="/home" class="nav-link">Home</a></li>
             <li *ngIf="isLoggedIn()" routerLinkActive="active" class="nav-item"><a routerLink="/upload"
                                                                                    class="nav-link">Upload</a></li>
-            <li *ngIf="isLoggedIn()" routerLinkActive="active" class="nav-item nav-link" style="cursor: pointer;"
+            <li *ngIf="isLoggedIn()" routerLinkActive="active" class="nav-item nav-link fakeLink" style="cursor: pointer;"
                 (click)="goToProfile()">Profile
             </li>
         </ul>
