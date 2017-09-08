@@ -164,6 +164,7 @@ h4 {
     display: block;
     padding: 13px 13px 0 13px;
     background: #fff;
+    cursor: pointer;
 }
 
 .grid__img {

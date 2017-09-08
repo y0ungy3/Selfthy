@@ -92,7 +92,6 @@ export class HomeComponent implements OnInit {
     }
 
     viewPicture(item: Item) {
-        console.log("clicked");
         this.itemService.callModal(item);
     }
 }

@@ -28,7 +28,7 @@
             <br/>
             <div class="card-columns">
                 <div class="card card__one" *ngFor="let item of allItems">
-                    <a class="grid__link" [routerLink]="['/' + item.username]">
+                    <a class="grid__link" (click)="viewPicture(item)">
                         <img class="grid__img" [src]="item.picture" alt="Some image" />
                     </a>
                     <p class="description">{{item.description}}</p>

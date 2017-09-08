@@ -103,4 +103,8 @@ export class ProfileComponent implements OnInit {
         }
         return formattedTags;
     }
+
+    viewPicture(item: Item) {
+        this.itemService.callModal(item);
+    }
 }
