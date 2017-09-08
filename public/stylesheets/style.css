@@ -1,10 +1,10 @@
-@font-face {
+/*@font-face {
   font-family: theFont;
   src: url('https://fonts.googleapis.com/css?family=Montserrat:300,400&subset=vietnamese');
-}
+}*/
 
 body {
-  font-family: theFont, sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 13px;
   letter-spacing: 2px;
   background: #ffffff;

@@ -25,16 +25,15 @@
         </div>
         <div class="form-group">
             <label for="description" class="descriptive">Description</label>
-            <textarea type="text" class="form-control" id="description" rows="4" name="description"
-                      maxlength="300" [(ngModel)]="characterLeft"
+            <textarea type="text" class="form-control" id="description" rows="5" name="description"
+                      maxlength="500" [(ngModel)]="characterLeft"
                       placeholder="example: I just got a polar bear as a pet! Follow me on Instagram to see more of him! "
             ></textarea>
-            <span class="help-block hint">Max Length: {{characterLeft | CharacterCount:300}}</span>
+            <span class="help-block hint">Max Length: {{characterLeft | CharacterCount:500}}</span>
         </div>
         <br/>
         <div class="form-group">
-            <p class="descriptive">Enter relevant tags</p>
-            <tag-input name="tags" [(ngModel)]='tags'></tag-input>
+            <tag-input name="tags" [(ngModel)]='tags' secondaryPlaceholder="Add a tag and press Enter"></tag-input>
         </div>
         <br/>
         <br/>

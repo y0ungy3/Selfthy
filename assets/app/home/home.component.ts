@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
         }
     }
 
-    @HostListener('window:scroll', ['$event']) onScrollEvent($event){
+    @HostListener('window:scroll', ['$event']) onScrollEvent($event) {
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
             this.itemsToSkip = this.itemsToSkip + 10;
             console.log(this.itemsToSkip);
@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
             this.itemService.getItemsPage(this.itemsToSkip)
                 .subscribe(
                     (items: Item[]) => {
-                        if(items.length <= 0) {
+                        if (items.length <= 0) {
                             this.itemsToSkip = this.itemsToSkip - 10;
                         } else {
                             this.allItems = this.allItems.concat(items);
@@ -79,5 +79,15 @@ export class HomeComponent implements OnInit {
                     }
                 );
         }
+    }
+
+    parseTags(array: []) {
+        let formattedTags = '';
+        let newTag = '';
+        for(let tag of array) {
+            newTag = "#" + tag + " ";
+            formattedTags = formattedTags + newTag;
+        }
+        return formattedTags;
     }
 }

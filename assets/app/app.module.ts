@@ -29,6 +29,7 @@ import {FooterComponent} from "./footer/footer.component";
 import {DeleteAccountComponent} from "./delete-account/delete-account.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
+
 @NgModule({
     declarations: [
         AppComponent,

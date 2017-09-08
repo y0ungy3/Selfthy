@@ -9,18 +9,19 @@
         <div *ngIf="!noResult">
             <div class="page__title">
                 <h2>What's New</h2>
-                <p class="page__title-sub">Recreating the effect seen on the website</p>
+                <p class="page__title-sub">See what people are up to...</p>
             </div>
             <div class="card-columns">
                 <div class="card card__one" *ngFor="let item of allItems">
                     <a class="grid__link" [routerLink]="['/' + item.username]">
                         <img class="grid__img" [src]="item.picture" alt="Some image" />
                     </a>
-                    <h3 class="grid__item-title">{{item.description}}</h3>
+                    <p class="description">{{item.description}}</p>
+                    <p class="tags">{{parseTags(item.tags)}}</p>
                 </div>
             </div>
         </div>
-        <h3 *ngIf="noResult">No results found</h3>
+        <h3 class="page__title" *ngIf="noResult">No results found</h3>
     </section>
 </div>
 <div class="container-fluid">

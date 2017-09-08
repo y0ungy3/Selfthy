@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 var User = require('./user');
 var schema = new Schema({
     picture: {type: Schema.Types.Mixed, required: true},
-    description: {type: String},
+    description: {type: String, maxlength: 500},
     createdAt: {type: Date, default: Date.now},
     user: {type: Schema.Types.ObjectId, ref: 'User'},
     tags: [{type: String}]

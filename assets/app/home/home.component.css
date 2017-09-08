@@ -36,7 +36,7 @@
 }
 
 .page__title {
-    padding: 0 2em;
+    padding-top: 2em;
 }
 
 .page__title-main {
@@ -94,19 +94,6 @@
     width: 100%;
 }
 
-.grid__item-title {
-    line-height: 1;
-    position: relative;
-    overflow: hidden;
-    margin: 0;
-    padding: 1em 0.5em;
-    text-align: left;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    color: #698b8d;
-    background: #fff;
-}
-
 /* Visibility/pointer events of items depending on state (loaded) */
 
 .js .grid,
@@ -150,4 +137,19 @@
 
 .container {
     padding-top: 50px;
+}
+
+.description {
+    text-align: left;
+    padding: 15px 15px 15px 15px;
+    letter-spacing: 1px;
+    font-size: 14px;
+    color: #637983;
+}
+
+.tags {
+    text-align: left;
+    color: #96acb6;
+    padding-right: 15px;
+    padding-left: 15px;
 }
