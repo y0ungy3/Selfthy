@@ -32,6 +32,7 @@ import {AboutComponent} from "./footer-links/about/about.component";
 import {UserAgreementComponent} from "./footer-links/user-agreement/user-agreement.component";
 import {ContactComponent} from "./footer-links/contact/contact.component";
 import {PictureModalComponent} from "./picture-modal/picture-modal.component";
+import {EmailService} from "./services/email.service";
 
 
 @NgModule({

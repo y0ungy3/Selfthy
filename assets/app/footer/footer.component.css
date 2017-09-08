@@ -1,6 +1,6 @@
 #myFooter{
     padding-top:32px;
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 0;
     right: 0;
@@ -23,7 +23,7 @@
 
 #myFooter a{
     color: #777; /*color for word links*/
-    font-size: 18px;
+    font-size: 12px;
 }
 
 #myFooter li{
@@ -79,14 +79,4 @@
 
 #myFooter .fa-twitter:focus{
     color:#00aced;
-}
-
-
-
-/* CSS used for positioning the footers at the bottom of the page. */
-/* You can remove this. */
-
-#myFooter{
-    flex: 0 0 auto;
-    -webkit-flex: 0 0 auto;
 }
