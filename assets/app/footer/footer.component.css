@@ -1,5 +1,9 @@
 #myFooter{
     padding-top:32px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 #myFooter .container{

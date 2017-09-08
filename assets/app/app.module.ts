@@ -28,6 +28,9 @@ import {CharacterCount} from "./pipes/characterCount.pipe";
 import {FooterComponent} from "./footer/footer.component";
 import {DeleteAccountComponent} from "./delete-account/delete-account.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {AboutComponent} from "./footer-links/about/about.component";
+import {UserAgreementComponent} from "./footer-links/user-agreement/user-agreement.component";
+import {ContactComponent} from "./footer-links/contact/contact.component";
 
 
 @NgModule({
@@ -47,7 +50,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         WebsiteModalComponent,
         CharacterCount,
         FooterComponent,
-        DeleteAccountComponent
+        DeleteAccountComponent,
+        AboutComponent,
+        UserAgreementComponent,
+        ContactComponent
     ],
     imports: [BrowserModule, HttpModule, routing, FormsModule, TagInputModule, BrowserAnimationsModule],
     bootstrap: [AppComponent],
