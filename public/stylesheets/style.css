@@ -1,5 +1,14 @@
+@font-face {
+  font-family: theFont;
+  src: url('https://fonts.googleapis.com/css?family=Montserrat:300,400&subset=vietnamese');
+}
+
+
+
 body {
-  font: 14px 'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: theFont, sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
   background: #ffffff;
 }
 /*#df2d70*
@@ -13,6 +22,20 @@ h1, h2, h3, h4 {
   color: #03a9f4;
 }
 
-.container {
-  padding-top: 10px;
+h1 {
+  font-size: 35px;
 }
+
+.container {
+  padding-top: 5px;
+}
+
+P {
+  color: #58595a;
+}
+
+.form-control::-webkit-input-placeholder { color: #96acb6; }  /* WebKit, Blink, Edge */
+.form-control:-moz-placeholder { color: #96acb6; }  /* Mozilla Firefox 4 to 18 */
+.form-control::-moz-placeholder { color: #96acb6; }  /* Mozilla Firefox 19+ */
+.form-control:-ms-input-placeholder { color: #96acb6; }  /* Internet Explorer 10-11 */
+.form-control::-ms-input-placeholder { color: #96acb6; }  /* Microsoft Edge */
