@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit {
     }
 
     search() {
-        console.log(this.searchValue);
         this.noResult = false;
         this.itemService.findItems(this.searchValue)
             .subscribe(
@@ -63,7 +62,6 @@ export class HomeComponent implements OnInit {
     @HostListener('window:scroll', ['$event']) onScrollEvent($event) {
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
             this.itemsToSkip = this.itemsToSkip + 10;
-            console.log(this.itemsToSkip);
 
             this.itemService.getItemsPage(this.itemsToSkip)
                 .subscribe(

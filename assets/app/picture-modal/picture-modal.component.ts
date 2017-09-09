@@ -17,7 +17,6 @@ export class PictureModalComponent implements OnInit {
         this.itemService.pictureModal
             .subscribe(
                 (item: Item) => {
-                    console.log('GOT IT');
                     this.picture = item.picture;
                     this.displayed = 'block';
                 }

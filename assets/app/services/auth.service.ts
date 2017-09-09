@@ -63,7 +63,6 @@ export class AuthService {
                 return transformedUser;
             })
             .catch((error: Response) => {
-                this.errorService.handleError(error.json());
                 return Observable.throw(error.json());
             });
     }

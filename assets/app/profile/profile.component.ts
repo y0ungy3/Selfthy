@@ -82,7 +82,7 @@ export class ProfileComponent implements OnInit {
                                 this.allItems = items;
                             },
                             (error) => {
-                                console.log(error)
+                                console.log("Error getting posts for a user");
                             }
                         );
 

@@ -23,12 +23,13 @@ app.set('view engine', 'hbs');
 app.use(bodyParser.json({ limit: '10mb', type: 'application/json' }));
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');

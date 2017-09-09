@@ -15,7 +15,6 @@ export class ItemService {
     };
 
     callModal(item: Item) {
-        console.log('called?');
         this.pictureModal.emit(item);
     }
 
@@ -105,7 +104,6 @@ export class ItemService {
                         item.tags
                     ))
                 }
-                console.log(transformedItems);
                 return transformedItems;
             })
             .catch((error: Response) => {
