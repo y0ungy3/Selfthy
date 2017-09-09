@@ -1,6 +1,7 @@
 import {Component, HostListener, OnInit} from "@angular/core";
 import {ItemService} from "../services/item.service";
 import {Item} from "../models/Item";
+import {AuthService} from "../services/auth.service";
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
     private searchValue = '';
     private itemsToSkip = 0;
 
-    constructor(private itemService: ItemService) {
+    constructor(private itemService: ItemService, private authService: AuthService) {
     };
 
     ngOnInit() {
@@ -26,6 +27,10 @@ export class HomeComponent implements OnInit {
                     console.log("error getting items page");
                 }
             );
+    }
+
+    isLoggedIn() {
+        return this.authService.isLoggedIn();
     }
 
     search() {

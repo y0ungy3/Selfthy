@@ -162,3 +162,28 @@
     padding-bottom: 5px;
     float: right;
 }
+
+h1, h2, h3 {
+    color: black;
+    text-align: center;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 18px;
+    letter-spacing: 5px;
+}
+
+h3 {
+    font-size: 16px;
+    letter-spacing: 5px;
+}
+
+.container-fluid {
+    padding-top: 50px;
+}
+
+.name {
+    color: #03a9f4;
+    font-weight: 700;
+}
